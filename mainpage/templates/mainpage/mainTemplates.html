@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+
+    <div class="list-group">
+      <button type="button" class="list-group-item list-group-item-action active">main</button>
+      <button type="button" class="list-group-item list-group-item-action">create article</button>
+      <button type="button" class="list-group-item list-group-item-action">news</button>
+      <button type="button" class="list-group-item list-group-item-action">friends</button>
+      <button type="button" class="list-group-item list-group-item-action">message</button>
+      <button href="blog" type="button" class="list-group-item list-group-item-action">trands</button>
+      <!--button type="button" class="list-group-item list-group-item-action" disabled>trands</--button -->
+    </div>
+    {% block content %}
+
+
+    {% endblock %}
+</body>
+<footer>
+    Copyright Cris Brown
+</footer>
+</html>

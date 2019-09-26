@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "mainpage/mainTemplates.html" %}
+{% load staticfiles %}
+
+
+{% block title %}
+    blog list
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h1>Hi everyone</h1>
+    </div>
+    <article>
+        История о том, как возле столовой появились загадочные розовые
+        следы с шестью пальцами, и почему это случилось.
+    </article>
+{% endblock %}
+
