@@ -1,31 +1,41 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>
+    <title id="title">
         {% block title %}
 
         {% endblock %}
     </title>
+
+    <link href="{% static 'my_blog/main.css' %}" rel="stylesheet" type="text/css"></link>
+     <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lora|PT+Sans&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="main_body">
 
 
     <div class="list-group">
-      <button type="button" class="list-group-item list-group-item-action active">main</button>
-      <button type="button" class="list-group-item list-group-item-action">create article</button>
-      <button type="button" class="list-group-item list-group-item-action">news</button>
-      <button type="button" class="list-group-item list-group-item-action">friends</button>
-      <button type="button" class="list-group-item list-group-item-action">message</button>
-      <button href="blog" type="button" class="list-group-item list-group-item-action">trands</button>
-      <!--button type="button" class="list-group-item list-group-item-action" disabled>trands</--button -->
+      <form>
+        <input type="button" value="main" onClick='location.href="http://127.0.0.1:8000/"'>
+        <input type="button" value="create article" onClick='location.href="http://127.0.0.1:8000/create_article"'>
+        <input type="button" value="news" onClick='location.href="http://127.0.0.1:8000/news"'>
+        <input type="button" value="friends" onClick='location.href="http://127.0.0.1:8000/friends"'>
+        <input type="button" value="message" onClick='location.href="http://127.0.0.1:8000/message"'>
+        <input type="button" value="trands" onClick='location.href="http://127.0.0.1:8000/trands"'>
+      </form>
+
+        <!--button type="button" class="list-group-item list-group-item-action" disabled>trands</--button -->
     </div>
+    <div id="body">
     {% block content %}
 
-
     {% endblock %}
+    </div>
+    <footer id="footer">
+        Copyright Cris Brown
+    </footer>
 </body>
-<footer>
-    Copyright Cris Brown
-</footer>
+
 </html>
