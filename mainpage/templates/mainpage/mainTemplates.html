@@ -16,19 +16,32 @@
 <body id="main_body">
 
 
-    <div class="list-group">
-      <form>
-        <input type="button" value="main" onClick='location.href="http://127.0.0.1:8000/"'>
-        <input type="button" value="create article" onClick='location.href="http://127.0.0.1:8000/create_article"'>
-        <input type="button" value="news" onClick='location.href="http://127.0.0.1:8000/news"'>
-        <input type="button" value="friends" onClick='location.href="http://127.0.0.1:8000/friends"'>
-        <input type="button" value="message" onClick='location.href="http://127.0.0.1:8000/message"'>
-        <input type="button" value="trands" onClick='location.href="http://127.0.0.1:8000/trands"'>
-      </form>
+    <header class="nav">
+        <a href="/" rel="">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ55hUJBQypwhxOO6dsifvOqoAWzJk2KHqO1ECcEnFRXAgkRTXpwA" alt="htmlbook.ru" class="logo" width="100" height="66">
+        </a>
+        <nav class="top_menu">
+
+
+
+            <form class="button-nav">
+                <input type="button" value="main" onClick='location.href="http://127.0.0.1:8000/"'>
+                <input type="button" value="create article" onClick='location.href="http://127.0.0.1:8000/create_article"'>
+                <input type="button" value="news" onClick='location.href="http://127.0.0.1:8000/news"'>
+                <input type="button" value="friends" onClick='location.href="http://127.0.0.1:8000/friends"'>
+                <input type="button" value="message" onClick='location.href="http://127.0.0.1:8000/message"'>
+                <input type="button" value="trands" onClick='location.href="http://127.0.0.1:8000/trands"'>
+            </form>
+
+            <form class="searching">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
 
         <!--button type="button" class="list-group-item list-group-item-action" disabled>trands</--button -->
-    </div>
-    <div id="body">
+        </nav>
+    </header>
+    <div id="content_body">
     {% block content %}
 
     {% endblock %}
@@ -39,3 +52,7 @@
 </body>
 
 </html>
+
+
+
+
