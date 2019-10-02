@@ -22,10 +22,30 @@ form.button-nav{
 
 form.searching{
     position: fixed;
-    top: 50px;
+    top: 20px;
     right: 100px;
 }
 
+
+#index_login{
+    width: 300px;
+    min-height: 250px;
+
+    position: fixed;
+    top: 40%;
+    right: 43%;
+    display: block;
+}
+
+input.big_text{
+    height: 35px;
+    width: 240px;
+}
+
+input.registration{
+    position: relative;
+    left: 48%;
+}
 
 #main_body{
     padding: 10px;
@@ -37,7 +57,7 @@ form.searching{
 
 #content_body{
     position: relative;
-    top: 5%;
+    top: 0%;
 
     font-family: 'PT Sans', sans-serif;
     margin-left: 10px;
