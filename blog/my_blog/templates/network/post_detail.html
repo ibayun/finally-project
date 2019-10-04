@@ -1,0 +1,19 @@
+{% extends "network/index.html" %}
+
+
+
+
+{% block title %}
+    {{ post.article_title }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="mt-5">
+
+        {{ post.article_title}}
+    </h1>
+    <p>
+
+        {{ post.article_text }}
+    </p>
+{% endblock %}
