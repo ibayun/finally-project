@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'friends',
     'message',
     'trands',
-    'registration'
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +57,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ROOT_URLCONF = 'blog.urls'
 
@@ -75,6 +77,7 @@ TEMPLATES = [
         },
     },
 ]
+APPEND_SLASH=False
 
 WSGI_APPLICATION = 'blog.wsgi.application'
 
@@ -89,7 +92,7 @@ DATABASES = {
     }
 }
 
-
+AUTH_USER_MODEL = 'users.User'
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -108,6 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+INCORRECT_ATTEMPTS_LIMIT = 3
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

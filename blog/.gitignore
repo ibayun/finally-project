@@ -1,6 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/git
 *$py.class
+*.pyc
 
 
 # Distribution / packaging

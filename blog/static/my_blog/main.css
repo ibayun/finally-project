@@ -18,6 +18,16 @@ nav.top_menu{
 
 form.button-nav{
     display: inline;
+    position: fixed;
+    top: 20px;
+    left: 150px;
+}
+
+form.button-menu{
+    display: inline;
+    position: fixed;
+    top: 20px;
+    left: 297px;
 }
 
 form.searching{
@@ -52,12 +62,13 @@ input.registration{
     position: fixed;
     top: 12%;
     bottom: 7%;
-    background: #e6e6e6;
+
 }
 
 #content_body{
+
     position: relative;
-    top: 0%;
+
 
     font-family: 'PT Sans', sans-serif;
     margin-left: 10px;
@@ -77,4 +88,35 @@ input.registration{
     text-align: center;
 }
 
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    padding: 10px;
+}
+
+.card-title{
+    padding: .75rem 1.25rem;
+    margin: 0px 0px;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.card-text{
+    word-wrap: break-word;
+}
+
+.error {
+    list-style: none;
+    color: #d47d77;
+    margin-top: 0;
+    margin-bottom: 0;
+
+}
 

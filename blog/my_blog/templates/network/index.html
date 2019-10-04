@@ -1,5 +1,5 @@
 {% extends "mainpage/mainTemplates.html" %}
-{% load staticfiles %}
+
 
 
 {% block title %}
@@ -8,11 +8,21 @@
 
 {% block content %}
     <div>
-        <h1>Hi everyone</h1>
+        {% for post in posts %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{post.article_title}}</h5>
+                    <p class="card-text">{{post.article_text | truncatewords:15}}</p>
+                    <a href="{{ post.get_absolute_url }}" class="btn btn-light">Read article</a>
+
+
+                </div>
+                <div class="card-footer">{{ post.article_date }}</div>
+            </div>
+            <p>
+                {{ post.title }}
+            </p>
+        {% endfor %}
     </div>
-    <article>
-        История о том, как возле столовой появились загадочные розовые
-        следы с шестью пальцами, и почему это случилось.
-    </article>
 {% endblock %}
 

@@ -37,7 +37,7 @@ def login_view(request):
                 user.save()
             except User.DoesNotExist:
                 pass
-            return render(request, "usersPage.html", context={
+            return render(request, "users/usersPage.html", context={
                 "error": True
             })
 
@@ -50,8 +50,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            user.verify_email()
-            return render(request, "check_email.html")
+            return render(request, "users/registerPage.html")
     else:
         form = RegistrationForm()
     return render(request, "users/registerPage.html", context={
