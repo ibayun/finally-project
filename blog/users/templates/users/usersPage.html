@@ -1,0 +1,18 @@
+{% extends "mainpage/mainTemplates.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+    <h1>Вход</h1>
+    <div class="big-card form">
+        <form method="POST" action="/accounts/login/">
+            {% csrf_token %}
+            {% if error %}
+                <div class="error">Something went wrong</div>
+            {% endif %}
+            <input placeholder="Username" name="username" type="text" class="text-input">
+            <input placeholder="Password" name="password" type="password" class="text-input">
+            <input type="submit" class="submit-btn">
+        </form>
+    </div>
+{% endblock %}
