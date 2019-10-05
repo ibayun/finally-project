@@ -26,9 +26,4 @@ def tag_detail(request, slug):
     return render(request, 'network/tagDetail.html', context={'tag': tag})
 
 
-class post_update(View):
-    def get(self, request, slug):
-        tag = Tag.object.get(slug__iexact=slug)
-        bound_form = TagForm(instance=tag)
-        return render(request, 'network/post_update.html', context={'form': bound_form, 'tag': tag})
 

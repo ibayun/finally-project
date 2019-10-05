@@ -10,7 +10,7 @@ def generate_slug(s):
 
 
 class Post(models.Model):
-    objects = None
+
     article_title = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     article_text = models.TextField(blank=True, db_index=True)

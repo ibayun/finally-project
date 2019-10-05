@@ -7,21 +7,10 @@
 {% endblock %}
 
 {% block content %}
+    <div><a href="{% url 'tags_list_url' %}">tags</a> </div>
     <div id="">
         {% for post in posts %}
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{post.article_title}}</h5>
-                    <p class="card-text">{{post.article_text | truncatewords:15}}</p>
-                    <a href="{{ post.get_absolute_url }}" class="btn btn-light">Read article</a>
-
-
-                </div>
-                <div class="card-footer">{{ post.article_date }}</div>
-            </div>
-            <p>
-                {{ post.title }}
-            </p>
+            {% include 'network/includes/blog_template.html' %}
         {% endfor %}
     </div>
 {% endblock %}
