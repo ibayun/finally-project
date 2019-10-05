@@ -66,6 +66,9 @@ input.registration{
 }
 
 #content_body{
+    overflow: auto;
+    width: 1050px;
+    height: 630px;
 
     position: relative;
 
