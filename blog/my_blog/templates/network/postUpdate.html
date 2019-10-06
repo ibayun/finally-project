@@ -1,0 +1,34 @@
+{% extends "mainpage/mainTemplates.html" %}
+
+
+{% block title %}
+    Edit post - "{{ post.title|title}}"
+{% endblock %}
+
+{% block content %}
+
+    <form action="{{ post.get_update_url }}" method="post">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="form-group">
+                {% if field.errors %}
+                    <div class="alert alert-errors">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+
+
+            </div>
+
+
+
+        {{ form.article_title}}
+        {{ form.slug}}
+        {{ form.article_text}}
+        {{ form.tags}}
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+
+{% endblock %}

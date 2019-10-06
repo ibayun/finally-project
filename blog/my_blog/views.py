@@ -51,3 +51,35 @@ class PostCreate(View):
             new_post = bound_form.save()
             return redirect(new_post)
         return render(request, 'network/postCreate.html', context={'form': bound_form})
+
+
+class PostUpdate(View):
+    def get(self, request, slug):
+        post = Post.objects.get(slug__iexact=slug)
+        bound_form = PostForm(instance=post)
+        return render(request, 'network/postUpdate.html', context={'form': bound_form, 'post': post})
+
+    def post(self, request, slug):
+        post = Post.objects.get(slug__iexact=slug)
+        bound_form = PostForm(request.POST, instance=post)
+
+        if bound_form.is_valid():
+            update_post = bound_form.save()
+            return redirect(update_post)
+        return render(request, 'network/postUpdate.html', context={'form': bound_form, 'post': post})
+
+
+class TagUpdate(View):
+    def get(self, request, slug):
+        tag = Tag.objects.get(slug__iexact=slug)
+        bound_form = TagForm(instance=tag)
+        return render(request, 'network/tagUpdate.html', context={'form': bound_form, 'tag': tag})
+
+    def post(self, request, slug):
+        tag = Tag.objects.get(slug__iexact=slug)
+        bound_form = TagForm(request.POST, instance=tag)
+
+        if bound_form.is_valid():
+            update_tag = bound_form.save()
+            return redirect(update_tag)
+        return render(request, 'network/tagUpdate.html', context={'form': bound_form, 'tag': tag})
