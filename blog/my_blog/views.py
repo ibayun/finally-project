@@ -43,4 +43,11 @@ class TagCreate(View):
 class PostCreate(View):
     def get(self, request):
         form = PostForm()
-        return render(request, 'network/postCreate.html')
+        return render(request, 'network/postCreate.html', context={'form': form})
+
+    def post(self, request):
+        bound_form = PostForm(request.POST)
+        if bound_form.is_valid():
+            new_post = bound_form.save()
+            return redirect(new_post)
+        return render(request, 'network/postCreate.html', context={'form': bound_form})

@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
-
-from .models import Tag
+from django.forms import ModelForm
+from .models import Tag, Post
 
 
 class TagForm(forms.Form):
@@ -42,20 +42,20 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = [
             'article_title',
-            'slug',
+            #'slug',
             'article_text',
             'tags',
         ]
 
         widgets = {
-            'article_title': forms.TextInput(attrs={'class:' 'form-control'}),
-            'slug': forms.TextInput(attrs={'class': 'form-control'}),
-            'article_text' : forms.Textarea(attrs={'class': 'form-control'}),
-            'tags' : forms.SelectMultiple(attrs={'class': 'form-control'})
+            'article_title': forms.TextInput(attrs={'class': 'form-control', 'size': 14, 'title': 'Enter your title'}),
+            #'slug': forms.TextInput(attrs={'class': 'form-control', 'size': 14, 'title': 'Enter your slug'}),
+            'article_text': forms.Textarea(attrs={'class': 'form-control', 'size': 14, 'title': 'Enter body post'}),
+            'tags': forms.SelectMultiple(attrs={'class': 'form-control', 'title': 'choice tag'}),
         }
 
     def clean_slug(self):
-        new_slug = self.cleaned_data['slug'].lower();
+        new_slug = self.cleaned_data['slug'].lower()
 
         if new_slug == 'creatw':
                 raise ValidationError('wrong name for "Slug"')
