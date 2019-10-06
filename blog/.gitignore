@@ -2,7 +2,7 @@
 __pycache__/git
 *$py.class
 *.pyc
-
+__pycache__/
 
 # Distribution / packaging
 .Python

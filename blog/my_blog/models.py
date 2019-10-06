@@ -36,5 +36,11 @@ class Tag(models.Model):
     def get_absolute_url(self):
         return reverse('tag_detail_url', kwargs={'slug': self.slug})
 
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = str(int(time()))
+        super().save(*args, **kwargs)
+
+
     def __str__(self):
         return '{}'.format(self.tag_title)

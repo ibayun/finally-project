@@ -5,7 +5,7 @@
 {% block content %}
     <h1>Вход</h1>
     <div class="big-card form">
-        <form method="POST" action="/accounts/login/">
+        <form method="POST" action="/accounts/login">
             {% csrf_token %}
             {% if error %}
                 <div class="error">Something went wrong</div>

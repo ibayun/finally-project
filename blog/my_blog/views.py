@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 
+from .forms import TagForm, PostForm
 from .models import Post, Tag
 
 # Create your views here.
@@ -26,4 +27,20 @@ def tag_detail(request, slug):
     return render(request, 'network/tagDetail.html', context={'tag': tag})
 
 
+class TagCreate(View):
+    def get(self, request):
+        form = TagForm
+        return render(request, 'network/tagCreate.html', context={'form': form})
 
+    def post(self, request):
+        bound_form = TagForm(request.POST)
+        if bound_form.is_valid():
+            new_tag = bound_form.save()
+            return redirect(new_tag)
+        return render(request, 'network/tagCreate.html', context={'form': bound_form})
+
+
+class PostCreate(View):
+    def get(self, request):
+        form = PostForm()
+        return render(request, 'network/postCreate.html')
