@@ -8,6 +8,10 @@
 {% endblock %}
 
 {% block content %}
+
+<a href="{{post.get_update_url}}">Edit post</a>
+<a href="{{post.get_delete_url}}">Delete post</a>
+
     <h1 class="mt-5">
 
         {{ post.article_title}}

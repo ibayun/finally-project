@@ -13,11 +13,11 @@ class TagForm(forms.ModelForm):
         model = Tag
         fields = [
             'tag_title',
-            # 'slug'
+            #'slug'
         ]
         widgets = {
             'tag_title': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'slug': forms.TextInput(attrs={'class': 'form-control'})
+            #'slug': forms.TextInput(attrs={'class': 'form-control'})
 
         }
 
