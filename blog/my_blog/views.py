@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
 from django.views import View
+from django.urls import reverse
+
+from .utils import ObjectUpdateMixin, ObjectCreateMixin, ObjectDeleteMixin
 
 from .forms import TagForm, PostForm
+
 from .models import Post, Tag
 
 # Create your views here.
@@ -27,59 +31,36 @@ def tag_detail(request, slug):
     return render(request, 'network/tagDetail.html', context={'tag': tag})
 
 
-class TagCreate(View):
-    def get(self, request):
-        form = TagForm
-        return render(request, 'network/tagCreate.html', context={'form': form})
-
-    def post(self, request):
-        bound_form = TagForm(request.POST)
-        if bound_form.is_valid():
-            new_tag = bound_form.save()
-            return redirect(new_tag)
-        return render(request, 'network/tagCreate.html', context={'form': bound_form})
+class TagCreate(ObjectCreateMixin, View):
+    model_form = TagForm
+    template = 'network/tagCreate.html'
 
 
-class PostCreate(View):
-    def get(self, request):
-        form = PostForm()
-        return render(request, 'network/postCreate.html', context={'form': form})
-
-    def post(self, request):
-        bound_form = PostForm(request.POST)
-        if bound_form.is_valid():
-            new_post = bound_form.save()
-            return redirect(new_post)
-        return render(request, 'network/postCreate.html', context={'form': bound_form})
+class PostCreate(ObjectCreateMixin, View):
+    model_form = PostForm
+    template = 'network/postCreate.html'
 
 
-class PostUpdate(View):
-    def get(self, request, slug):
-        post = Post.objects.get(slug__iexact=slug)
-        bound_form = PostForm(instance=post)
-        return render(request, 'network/postUpdate.html', context={'form': bound_form, 'post': post})
-
-    def post(self, request, slug):
-        post = Post.objects.get(slug__iexact=slug)
-        bound_form = PostForm(request.POST, instance=post)
-
-        if bound_form.is_valid():
-            update_post = bound_form.save()
-            return redirect(update_post)
-        return render(request, 'network/postUpdate.html', context={'form': bound_form, 'post': post})
+class PostUpdate(ObjectUpdateMixin, View):
+    model = Post
+    model_form = PostForm
+    template = 'network/postUpdate.html'
 
 
-class TagUpdate(View):
-    def get(self, request, slug):
-        tag = Tag.objects.get(slug__iexact=slug)
-        bound_form = TagForm(instance=tag)
-        return render(request, 'network/tagUpdate.html', context={'form': bound_form, 'tag': tag})
+class TagUpdate(ObjectUpdateMixin, View):
+    model = Tag
+    model_form = TagForm
+    template = 'network/tagUpdate.html'
 
-    def post(self, request, slug):
-        tag = Tag.objects.get(slug__iexact=slug)
-        bound_form = TagForm(request.POST, instance=tag)
 
-        if bound_form.is_valid():
-            update_tag = bound_form.save()
-            return redirect(update_tag)
-        return render(request, 'network/tagUpdate.html', context={'form': bound_form, 'tag': tag})
+class PostDelete(ObjectDeleteMixin, View):
+    model = Post
+    template = 'network/postDelete.html'
+    redirect_url = 'post_list_url'
+
+
+class TagDelete(ObjectDeleteMixin, View):
+    model = Tag
+    template = 'network/tagDelete.html'
+    redirect_url = 'tags_list_url'
+

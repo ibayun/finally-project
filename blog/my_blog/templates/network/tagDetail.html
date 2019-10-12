@@ -5,7 +5,13 @@
 {% endblock %}
 
 {% block content %}
+
+
+<a href="{{tag.get_update_url}}">Edit tag</a>
+<a href="{{tag.get_delete_url}}">Delete tag</a>
+
     <h1>Posts with "{{ tag.tag_title }}" tag:</h1>
+
     {% for post in tag.posts.all %}
         {% include 'network/includes/blog_template.html' %}
     {% endfor %}
