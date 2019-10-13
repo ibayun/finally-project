@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView
 
 from .utils import ObjectUpdateMixin, ObjectCreateMixin, ObjectDeleteMixin
 
@@ -36,7 +38,7 @@ class TagCreate(ObjectCreateMixin, View):
     template = 'network/tagCreate.html'
 
 
-class PostCreate(ObjectCreateMixin, View):
+class PostCreate(ObjectCreateMixin, LoginRequiredMixin, CreateView, View):
     model_form = PostForm
     template = 'network/postCreate.html'
 
@@ -63,4 +65,3 @@ class TagDelete(ObjectDeleteMixin, View):
     model = Tag
     template = 'network/tagDelete.html'
     redirect_url = 'tags_list_url'
-
