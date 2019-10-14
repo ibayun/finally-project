@@ -1,11 +1,8 @@
-from django.conf import settings
 from users.models import User
 from django.db import models
 from django.shortcuts import reverse
 from time import time
 from django.utils.text import slugify
-
-
 
 
 def generate_slug(s):
@@ -20,7 +17,6 @@ class Post(models.Model):
     article_text = models.TextField(blank=True, db_index=True)
     article_date = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
-
 
     def get_absolute_url(self):
         return reverse('post_detail_url', kwargs={'slug': self.slug})
@@ -39,19 +35,24 @@ class Post(models.Model):
     def __str__(self):
         return self.article_title
 
+    class Meta:
+        ordering = ['-article_date']
+
 
 class Tag(models.Model):
+    created_by = models.ForeignKey(User, verbose_name="user", on_delete='CASCADE')
     tag_title = models.CharField(max_length=40, unique=True)
     slug = models.SlugField(max_length=40, unique=True)
+    tag_date = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
         return reverse('tag_detail_url', kwargs={'slug': self.slug})
 
-    def get_update_url(self):
-        return reverse('tag_update_url', kwargs={'slug': self.slug})
-
-    def get_delete_url(self):
-        return reverse('tag_delete_url', kwargs={'slug': self.slug})
+    # def get_update_url(self):
+    #     return reverse('tag_update_url', kwargs={'slug': self.slug})
+    #
+    # def get_delete_url(self):
+    #     return reverse('tag_delete_url', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -60,3 +61,6 @@ class Tag(models.Model):
 
     def __str__(self):
         return '{}'.format(self.tag_title)
+
+    class Meta:
+        ordering = ['-tag_date']

@@ -8,19 +8,13 @@ from .models import Tag, Post
 
 
 class TagForm(forms.ModelForm):
-    """tag_title = forms.CharField(max_length=40)
-    #slug = forms.SlugField(max_length=40)"""
-
     class Meta:
         model = Tag
         fields = [
             'tag_title',
-            #'slug'
         ]
         widgets = {
             'tag_title': forms.TextInput(attrs={'class': 'form-control'}),
-            #'slug': forms.TextInput(attrs={'class': 'form-control'})
-
         }
 
     def clean_slug(self):
@@ -31,27 +25,18 @@ class TagForm(forms.ModelForm):
         if Tag.objects.filter(slug__iexact=new_slug).count():
             raise ValidationError('Slug "{}" - was create.'.format(new_slug))
 
-    # def save(self):
-    #     new_tag = Tag.objects.create(
-    #         tag_title=self.cleaned_data['tag_title'],
-    #         #slug=self.cleaned_data['slug']
-    #     )
-    #     return new_tag
 
-
-class PostForm(forms.ModelForm, LoginRequiredMixin, CreateView):
+class PostForm(LoginRequiredMixin, forms.ModelForm, CreateView):
     class Meta:
         model = Post
         fields = [
             'article_title',
-            # 'slug',
             'article_text',
             'tags',
         ]
 
         widgets = {
             'article_title': forms.TextInput(attrs={'class': 'form-control', 'size': 14, 'title': 'Enter your title'}),
-            #   'slug': forms.TextInput(attrs={'class': 'form-control', 'size': 14, 'title': 'Enter your slug'}),
             'article_text': forms.Textarea(attrs={'class': 'form-control', 'size': 14, 'title': 'Enter body post'}),
             'tags': forms.SelectMultiple(attrs={'class': 'form-control', 'title': 'choice tag'}),
         }
@@ -66,6 +51,3 @@ class PostForm(forms.ModelForm, LoginRequiredMixin, CreateView):
         if new_slug == 'create':
             raise ValidationError('wrong name for "Slug"')
         return new_slug
-
-
-

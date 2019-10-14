@@ -10,12 +10,14 @@ from .forms import TagForm, PostForm
 
 from .models import Post, Tag
 
-# Create your views here.
+from django.core.paginator import Paginator
 
 
-def posts_article(request):
-    posts = Post.objects.all()
-    return render(request, 'network/index.html', context={'posts': posts})
+# def posts_article(request):
+#     posts = Post.objects.all()
+#     paginator = Paginator(posts, 4)
+#     page = paginator.get_page(1)
+#     return render(request, 'network/index.html', context={'posts': page.object_list})
 
 
 def post_detail(request, slug):
@@ -33,12 +35,20 @@ def tag_detail(request, slug):
     return render(request, 'network/tagDetail.html', context={'tag': tag})
 
 
+def my_blog_list(request):
+    posts = (Post.objects.filter(created_by_id=request.user.id))
+    paginator = Paginator(posts, 1)
+    page = paginator.get_page(1)
+    return render(request, 'network/index.html', context={'posts': page.object_list})
+
+
+
 class TagCreate(ObjectCreateMixin, View):
     model_form = TagForm
     template = 'network/tagCreate.html'
 
 
-class PostCreate(ObjectCreateMixin, LoginRequiredMixin, CreateView, View):
+class PostCreate(ObjectCreateMixin, CreateView, View):
     model_form = PostForm
     template = 'network/postCreate.html'
 
@@ -49,10 +59,10 @@ class PostUpdate(ObjectUpdateMixin, View):
     template = 'network/postUpdate.html'
 
 
-class TagUpdate(ObjectUpdateMixin, View):
-    model = Tag
-    model_form = TagForm
-    template = 'network/tagUpdate.html'
+# class TagUpdate(ObjectUpdateMixin, View):
+#     model = Tag
+#     model_form = TagForm
+#     template = 'network/tagUpdate.html'
 
 
 class PostDelete(ObjectDeleteMixin, View):
@@ -61,7 +71,7 @@ class PostDelete(ObjectDeleteMixin, View):
     redirect_url = 'post_list_url'
 
 
-class TagDelete(ObjectDeleteMixin, View):
-    model = Tag
-    template = 'network/tagDelete.html'
-    redirect_url = 'tags_list_url'
+# class TagDelete(ObjectDeleteMixin, View):
+#     model = Tag
+#     template = 'network/tagDelete.html'
+#     redirect_url = 'tags_list_url'
