@@ -4,12 +4,20 @@ from django.core.paginator import Paginator
 
 
 from my_blog.models import Post, Tag
-
+from django.db.models import Q
 # Create your views here.
 
 
 def posts_article(request):
-    posts = Post.objects.all()
+    search_question = request.GET.get('search', '')
+    if search_question:
+        posts = Post.objects.filter(
+            Q(article_title__icontains=search_question) |
+            Q(article_text__icontains=search_question)
+        )
+    else:
+        posts = Post.objects.all()
+
     paginator = Paginator(posts, 2)
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)

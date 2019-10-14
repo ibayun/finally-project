@@ -37,10 +37,28 @@ def tag_detail(request, slug):
 
 def my_blog_list(request):
     posts = (Post.objects.filter(created_by_id=request.user.id))
-    paginator = Paginator(posts, 1)
-    page = paginator.get_page(1)
-    return render(request, 'network/index.html', context={'posts': page.object_list})
+    paginator = Paginator(posts, 2)
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
+    is_paginated = page.has_other_pages()
+    print(paginator.page_range)
 
+    if page.has_previous():
+        previous_url = '?page={}'.format(page.previous_page_number())
+    else:
+        previous_url = ''
+
+    if page.has_next():
+        next_url = '?page={}'.format(page.next_page_number())
+    else:
+        next_url = ''
+
+    return render(request, 'network/index.html', context={
+        'page_objects': page,
+        'is_paginated': is_paginated,
+        'next_url': next_url,
+        'previous_url': previous_url,
+    })
 
 
 class TagCreate(ObjectCreateMixin, View):

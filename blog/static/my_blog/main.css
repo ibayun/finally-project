@@ -32,7 +32,7 @@ form.button-menu{
     left: 297px;
 }
 
-form.searching{
+#searching{
     position: fixed;
     top: 20px;
     right: 100px;
