@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.views import View
 from django.urls import reverse
@@ -36,12 +37,22 @@ def tag_detail(request, slug):
 
 
 def my_blog_list(request):
-    posts = (Post.objects.filter(created_by_id=request.user.id))
+    search_question = request.GET.get('search', '')
+    if search_question:
+        posts = Post.objects.filter(
+            Q(article_title__icontains=search_question) |
+            Q(article_text__icontains=search_question)
+        )
+
+
+
+    else:
+        posts = (Post.objects.filter(created_by_id=request.user.id))
+
     paginator = Paginator(posts, 2)
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)
     is_paginated = page.has_other_pages()
-    print(paginator.page_range)
 
     if page.has_previous():
         previous_url = '?page={}'.format(page.previous_page_number())

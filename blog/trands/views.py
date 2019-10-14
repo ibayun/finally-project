@@ -18,11 +18,10 @@ def posts_article(request):
     else:
         posts = Post.objects.all()
 
-    paginator = Paginator(posts, 2)
+    paginator = Paginator(posts, 8)
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)
     is_paginated = page.has_other_pages()
-    print(paginator.page_range)
 
     if page.has_previous():
         previous_url = '?page={}'.format(page.previous_page_number())

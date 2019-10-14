@@ -59,5 +59,3 @@ class ObjectDeleteMixin:
         obj = self.model.objects.get(slug__iexact=slug)
         obj.delete()
         return redirect(reverse(self.redirect_url))
-
-# class ObjectPostsMixin:
