@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django.core.paginator import Paginator
 
@@ -6,6 +6,8 @@ from django.core.paginator import Paginator
 from my_blog.models import Post, Tag
 from django.db.models import Q
 # Create your views here.
+from my_blog.forms import CommentForm
+from my_blog.models import Comments
 
 
 def posts_article(request):
@@ -43,7 +45,25 @@ def posts_article(request):
 
 def post_detail(request, slug):
     post = Post.objects.get(slug__iexact=slug)
-    return render(request, 'network/post_detail.html', context={'post': post})
+    comment = Comments.objects.filter(post_id=post)
+    # form = CommentForm(request.POST)
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.author = request.user
+            form.post = post
+            form.save()
+            return redirect('post_detail_url', slug)
+    else:
+
+        form = CommentForm()
+    return render(request, 'network/post_detail.html', context={
+        'post': post,
+        "comments": comment,
+        "form": form,
+    })
 
 
 def tags_list(request):

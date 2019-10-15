@@ -49,6 +49,22 @@
         {% if post.picture %}
            <p> <img src="{{ MEDIA_URL }}{{ post.picture }}"></p>
         {% endif %}
+        <p> комменты - {{ post.article_date }} </p>
+        {% for comment in comments %}
+
+            <div>
+                <p>{{ comment.text }} - текст коммента</p>
+                <p>{{ comment.author.username }} - автор</p>
+                <p>{{ comment.date_comments }} - время создания</p>
+                <p>. </p>
+                <p>. </p>
+            </div>
+        {% endfor %}
+        <form action="" method="post">
+            {% csrf_token %}
+                {{ form }}
+            <button type="submit"> Оставить </button>
+        </form>
     </div>
 
 {% endblock %}

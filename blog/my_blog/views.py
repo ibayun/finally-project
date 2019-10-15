@@ -8,9 +8,9 @@ from django.views.generic.edit import CreateView
 
 from .utils import ObjectUpdateMixin, ObjectCreateMixin, ObjectDeleteMixin
 
-from .forms import TagForm, PostForm
+from .forms import TagForm, PostForm, CommentForm
 
-from .models import Post, Tag
+from .models import Post, Tag, Comments
 
 from django.core.paginator import Paginator
 
@@ -24,7 +24,13 @@ from django.core.paginator import Paginator
 
 def post_detail(request, slug):
     post = Post.objects.get(slug__iexact=slug)
-    return render(request, 'network/post_detail.html', context={'post': post})
+    comment = Comments.odjects.filter(Post=slug)
+    form = CommentForm()
+    return render(request, 'network/post_detail.html', context={
+        'post': post,
+        "comments": comment,
+        "form": form,
+    })
 
 
 def tags_list(request):

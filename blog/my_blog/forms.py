@@ -4,7 +4,7 @@ from django.forms import ModelForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 
-from .models import Tag, Post
+from .models import Tag, Post, Comments
 
 
 class TagForm(forms.ModelForm):
@@ -27,6 +27,7 @@ class TagForm(forms.ModelForm):
 
 
 class PostForm(LoginRequiredMixin, forms.ModelForm, CreateView):
+
     class Meta:
         model = Post
         fields = [
@@ -52,3 +53,14 @@ class PostForm(LoginRequiredMixin, forms.ModelForm, CreateView):
         if new_slug == 'create':
             raise ValidationError('wrong name for "Slug"')
         return new_slug
+
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comments
+        fields = [
+            'text'
+        ]
+        # widgets = {
+        #     'text_comments': forms.Textarea(attrs={'class': 'form-control', 'size': 14, 'title': 'Enter body post'})
+        # }
