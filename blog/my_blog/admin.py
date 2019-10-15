@@ -6,4 +6,5 @@ from my_blog.models import Tag
 
 admin.site.register(Post)
 admin.site.register(Tag)
+
 # Register your models here.

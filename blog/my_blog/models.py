@@ -17,6 +17,9 @@ class Post(models.Model):
     article_text = models.TextField(blank=True, db_index=True)
     article_date = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
+    picture = models.ImageField(null=True, blank=True, upload_to='image/', verbose_name='image')
+    # likes = models.PositiveIntegerField(default=0)
+    # dislikes = models.PositiveIntegerField(default=0)
 
     def get_absolute_url(self):
         return reverse('post_detail_url', kwargs={'slug': self.slug})

@@ -15,7 +15,7 @@
 
     <h1 class="mt-5">
 
-        {{ post.article_title}}
+        {{ post.article_title }}
     </h1>
     <p>
 
@@ -38,6 +38,17 @@
 
 
         <p> дата создания - {{ post.article_date }} </p>
+<!--        <button type="button" class="btn btn-default btn-sm">-->
+<!--          <span class="glyphicon glyphicon-thumbs-up"> 0</span> Like-->
+<!--        </button>-->
+<!--        <button type="button" class="btn btn-default btn-sm">-->
+<!--          <span class="glyphicon glyphicon-thumbs-down"> 0</span> Dislike-->
+<!--        </button>-->
+
+
+        {% if post.picture %}
+           <p> <img src="{{ MEDIA_URL }}{{ post.picture }}"></p>
+        {% endif %}
     </div>
 
 {% endblock %}

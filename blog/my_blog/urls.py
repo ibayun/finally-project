@@ -1,4 +1,9 @@
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path
+
+
 from .views import *
 
 urlpatterns = [
@@ -18,5 +23,8 @@ urlpatterns = [
     path('post/<str:slug>/', post_detail, name='post_detail_url'),
     path('post/<str:slug>/update', PostUpdate.as_view(), name='post_update_url'),
     path('post/<str:slug>/delete', PostDelete.as_view(), name='post_delete_url'),
+    # path('post/<str:slug>/like', LikesPost.as_view(), name='likes_post_url'),
 
-]
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

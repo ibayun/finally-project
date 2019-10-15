@@ -33,6 +33,7 @@ class PostForm(LoginRequiredMixin, forms.ModelForm, CreateView):
             'article_title',
             'article_text',
             'tags',
+            'picture',
         ]
 
         widgets = {

@@ -1,5 +1,6 @@
 from django.db.models import Q
-from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -41,10 +42,9 @@ def my_blog_list(request):
     if search_question:
         posts = Post.objects.filter(
             Q(article_title__icontains=search_question) |
-            Q(article_text__icontains=search_question)
+            Q(article_text__icontains=search_question),
+            Q(created_by_id=request.user.id)
         )
-
-
 
     else:
         posts = (Post.objects.filter(created_by_id=request.user.id))
@@ -104,3 +104,8 @@ class PostDelete(ObjectDeleteMixin, View):
 #     model = Tag
 #     template = 'network/tagDelete.html'
 #     redirect_url = 'tags_list_url'
+
+# def LikesPost(request):
+#     post = get_object_or_404(Post, id=request.POST.get('post_id'))
+#     post.likes.add(request.user)
+#     return HttpResponseRedirect(post.get_absolute_url())
