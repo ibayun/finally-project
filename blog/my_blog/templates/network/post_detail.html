@@ -8,7 +8,9 @@
 {% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
+
+{% if post.created_by == user %}
+
     <a href="{{post.get_update_url}}">Edit post</a>
     <a href="{{post.get_delete_url }}">Delete post</a>
 {% endif %}
