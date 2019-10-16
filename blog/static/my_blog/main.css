@@ -1,3 +1,5 @@
+
+
 #title {
     font-family: 'Lora', serif;
 }
@@ -30,7 +32,7 @@ form.button-menu{
     left: 297px;
 }
 
-form.searching{
+#searching{
     position: fixed;
     top: 20px;
     right: 100px;
@@ -91,29 +93,29 @@ input.registration{
     text-align: center;
 }
 
-.card{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-    padding: 10px;
-}
+/*.card{*/
+/*    position: relative;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    min-width: 0;*/
+/*    word-wrap: break-word;*/
+/*    background-color: #fff;*/
+/*    background-clip: border-box;*/
+/*    border: 1px solid rgba(0,0,0,.125);*/
+/*    border-radius: .25rem;*/
+/*    padding: 10px;*/
+/*}*/
 
-.card-title{
-    padding: .75rem 1.25rem;
-    margin: 0px 0px;
-    background-color: rgba(0,0,0,.03);
-    border-bottom: 1px solid rgba(0,0,0,.125);
-}
+/*.card-title{*/
+/*    padding: .75rem 1.25rem;*/
+/*    margin: 0px 0px;*/
+/*    background-color: rgba(0,0,0,.03);*/
+/*    border-bottom: 1px solid rgba(0,0,0,.125);*/
+/*}*/
 
-.card-text{
-    word-wrap: break-word;
-}
+/*.card-text{*/
+/*    word-wrap: break-word;*/
+/*}*/
 
 .error {
     list-style: none;

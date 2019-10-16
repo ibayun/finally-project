@@ -13,11 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from .views import redirect_url
 
 urlpatterns = [
+    # path('', redirect_url, name='post_trends_url'),
     path('admin/', admin.site.urls),
     path('blog/', include('my_blog.urls')),
     path('', include('mainpage.urls')),
@@ -27,4 +31,6 @@ urlpatterns = [
     path('message/', include('message.urls')),
     path('trands/', include('trands.urls')),
     path('', include('users.urls')),
-]
+    # path('post/<str:slug>/update', PostUpdate.as_view(), name='post_update_url')
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

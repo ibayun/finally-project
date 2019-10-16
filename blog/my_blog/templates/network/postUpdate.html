@@ -2,7 +2,7 @@
 
 
 {% block title %}
-    Edit post - "{{ post.title|title}}"
+    Edit post - "{{ post.article_title|title}}"
 {% endblock %}
 
 {% block content %}
@@ -27,6 +27,8 @@
         {{ form.slug}}
         {{ form.article_text}}
         {{ form.tags}}
+        {{ form.author}}
+
 
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

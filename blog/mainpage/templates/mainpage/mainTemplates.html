@@ -9,12 +9,15 @@
 
             {% endblock %}
         </title>
-
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
         <link href="{% static 'my_blog/main.css' %}" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lora|PT+Sans&display=swap" rel="stylesheet">
+
     </head>
 
     <body id="main_body">
+
 
         <header class="nav">
             <a href="/" rel="">
@@ -26,25 +29,58 @@
                     <input type="button" value="trends" onClick='location.href="http://127.0.0.1:8000/trands/"'>
                     <input type="button" value="news" onClick='location.href="http://127.0.0.1:8000/news/"'>
                 </form>
-                <form class="searching">
-                    <input class="big_text" type="search" placeholder="Search" aria-label="Search">
-                    <button class=" " type="submit">Search</button>
-                </form>
-            <!--button type="button" class="list-group-item list-group-item-action" disabled>trands</--button -->
+            <nav id=searching class="navbar navbar-light bg-light" action="{% url 'post_list_url' %}">
+              <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </nav>
             </nav>
         </header>
         <div id="content_body">
+
         {% block content %}
 
         {% endblock %}
 
+        {% if is_paginated %}
+
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item {% if not previous_url %} disabled {% endif %}">
+                        <a class="page-link" href="{{ previous_url }}" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+
+                    {% for n in page_objects.paginator.page_range %}
+                        {% if page_objects.number == n %}
+                            <li class="page-item active">
+                                <a class="page-link" href="?page={{ n }}">{{ n }}
+                                <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                        {% elif n > page_objects.number|add:-4  and n < page_objects.number|add:4 %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ n }}">{{ n }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    <li class="page-item {% if not next_url %} disabled {% endif %}">
+                        <a class="page-link" href="{{ next_url }}" tabindex="+1" aria-disabled="true">Next</a>
+                    </li>
+                    </li>
+                </ul>
+            </nav>
+        {% endif %}
+
+
+
+
             <div class="header-tabs">
                 {% if user.is_authenticated %}
+                <p> Hi, {{user.username}} </p>
                 <nav class="top_menu">
                     <form class="button-menu">
-                        <input type="button" value="friends" onClick='location.href="http://127.0.0.1:8000/friends/"'>
-                        <input type="button" value="message" onClick='location.href="http://127.0.0.1:8000/message/"'>
-                        <input type="button" value="create article" onClick='location.href="http://127.0.0.1:8000/create_article/"'>
                         <input type="button" value="my_blog" onClick='location.href="http://127.0.0.1:8000/blog/"'>
                     </form>
                 </nav>

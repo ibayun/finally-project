@@ -9,7 +9,7 @@
         {% csrf_token %}
 
         <h2>
-            Delete "{{ tag.tag_title|title }}"???
+            Delete "{{ tag.tag_title }}"???
         </h2>
         <button type="submit" name="button">Yes</button>
         <input type="button" onclick="history.back();" value="No"/>

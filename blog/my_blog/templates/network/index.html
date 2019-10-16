@@ -1,7 +1,5 @@
 {% extends "mainpage/mainTemplates.html" %}
 
-
-
 {% block title %}
     blog list
 {% endblock %}
@@ -11,9 +9,11 @@
     <div><a href="{% url 'tag_create_url' %}">create tag</a> </div>
     <div><a href="{% url 'post_create_url' %}">create post</a> </div>
     <div id="">
-        {% for post in posts %}
+        {% for post in page_objects.object_list %}
             {% include 'network/includes/blog_template.html' %}
         {% endfor %}
     </div>
 {% endblock %}
+
+
 
