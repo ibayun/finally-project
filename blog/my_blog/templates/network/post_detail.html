@@ -11,8 +11,8 @@
 
 {% if post.created_by == user %}
 
-    <a href="{{post.get_update_url}}">Edit post</a>
-    <a href="{{post.get_delete_url }}">Delete post</a>
+    <a href="{{ post.get_update_url }}">Edit post</a>
+    <a href="{{ post.get_delete_url }}">Delete post</a>
 {% endif %}
 
     <h1 class="mt-5">
@@ -52,21 +52,32 @@
            <p> <img src="{{ MEDIA_URL }}{{ post.picture }}"></p>
         {% endif %}
         <p> комменты - {{ post.article_date }} </p>
-        {% for comment in comments %}
+        {% if user.is_authenticated %}
+            {% for comment in comments %}
 
-            <div>
-                <p>{{ comment.text }} - текст коммента</p>
-                <p>{{ comment.author.username }} - автор</p>
-                <p>{{ comment.date_comments }} - время создания</p>
-                <p>. </p>
-                <p>. </p>
-            </div>
-        {% endfor %}
-        <form action="" method="post">
-            {% csrf_token %}
-                {{ form }}
-            <button type="submit"> Оставить </button>
-        </form>
+                <div>
+                    {{ comment.author.username }}
+                    {{ request.user.username }}
+                    {{comment.id}}
+                    {% if comment.author.username == request.user.username %}
+<!--                        <form action="{{ comments.get_delete_url }}" method="post">-->
+                        <a href="{% url 'delete_comment' slug=post.slug id=comment.id %}">удалить</a>
+<!--                        </form>-->
+                    {% endif %}
+                    <p>{{ comment.text }} - текст коммента</p>
+                    <p>{{ comment.author.username }} - автор</p>
+                    <p>{{ comment.date_comments }} - время создания</p>
+                    <p>. </p>
+                    <p>. </p>
+                </div>
+
+            {% endfor %}
+            <form action="" method="post" >
+                {% csrf_token %}
+                    {{ form }}
+                <button type="submit"> Оставить </button>
+            </form>
+        {% endif %}
     </div>
 
 {% endblock %}

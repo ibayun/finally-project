@@ -21,7 +21,6 @@ class ObjectCreateMixin(LoginRequiredMixin, CreateView):
 
     def post(self, request):
         bound_form = self.model_form(request.POST, request.FILES)
-        print(bound_form)
         if bound_form.is_valid():
             self.object = bound_form.save(commit=False)
             self.object.created_by = self.request.user
@@ -64,6 +63,21 @@ class ObjectDeleteMixin:
 
     def post(self, request, slug):
         obj = self.model.objects.get(slug__iexact=slug)
+        obj.delete()
+        return redirect(reverse(self.redirect_url))
+
+
+class ObjectDeleteCommentMixin:
+    model = None
+    template = None
+    redirect_url = None
+
+    def get(self, request, id):
+        obj = self.model.objects.get(id=id)
+        return render(request,  self.template, context={self.model.__name__.lower: obj})
+
+    def post(self, request, id):
+        obj = self.model.objects.get(id=id)
         obj.delete()
         return redirect(reverse(self.redirect_url))
 

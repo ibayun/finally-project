@@ -12,4 +12,6 @@ urlpatterns = [
 
     path('create_article', PostCreate.as_view(), name='post_create_url'),
     path('post/<str:slug>/', post_detail, name='post_detail_url'),
+    # path('post/<str:slug>/?id=<int:id>', delete, name='comment_delete_url'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -29,7 +29,7 @@ urlpatterns = [
     path('news/', include('news.urls')),
     path('friends/', include('friends.urls')),
     path('message/', include('message.urls')),
-    path('trands/', include('trands.urls')),
+    # path('trands/', include('trands.urls')),
     path('', include('users.urls')),
     # path('post/<str:slug>/update', PostUpdate.as_view(), name='post_update_url')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
