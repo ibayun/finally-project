@@ -56,8 +56,8 @@ def post_detail(request, slug):
             form.post = post
             form.save()
             return redirect('post_detail_url', slug)
-    else:
 
+    else:
         form = CommentForm()
     return render(request, 'network/post_detail.html', context={
         'post': post,
@@ -78,3 +78,13 @@ def tag_detail(request, slug):
 
 def index(request):
     return render(request, 'trands/trandsPage.html')
+
+
+# def delete(ObjectDeleteMixin, View):
+#     model = Post
+#     emplate = 'network/commentDelete.html'
+#     redirect_url = 'http://127.0.0.1:8000/trands/post/wdsasdasd-1571164915'
+    # class PostDelete(ObjectDeleteMixin, View):
+    #     model = Post
+    #     template = 'network/postDelete.html'
+    #     redirect_url = 'post_list_url'
