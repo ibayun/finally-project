@@ -8,24 +8,12 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 
-from .utils import ObjectUpdateMixin, ObjectCreateMixin, ObjectDeleteMixin, ObjectDeleteCommentMixin
-
+from .utils import ObjectUpdateMixin, ObjectCreateMixin, ObjectDeleteMixin
 from .forms import TagForm, PostForm, CommentForm
 
 from .models import Post, Tag, Comments
 
 from django.core.paginator import Paginator
-
-
-#  def post_detail(request, slug):
-#     post = Post.objects.get(slug__iexact=slug)
-#     comment = Comments.odjects.filter(Post=slug)
-#     form = CommentForm()
-#     return render(request, 'network/post_detail.html', context={
-#         'post': post,
-#         "comments": comment,
-#         "form": form,
-#     })
 
 
 def post_detail(request, slug):
@@ -112,30 +100,17 @@ class PostUpdate(ObjectUpdateMixin, View):
     template = 'network/postUpdate.html'
 
 
-# class TagUpdate(ObjectUpdateMixin, View):
-#     model = Tag
-#     model_form = TagForm
-#     template = 'network/tagUpdate.html'
-
-
 class PostDelete(ObjectDeleteMixin, View):
     model = Post
     template = 'network/postDelete.html'
     redirect_url = 'post_list_url'
 
 
+class TagDelete(ObjectDeleteMixin, View):
+    model = Tag
+    template = 'network/tagDelete.html'
+    redirect_url = 'tags_list_url'
 
-
-
-# class TagDelete(ObjectDeleteMixin, View):
-#     model = Tag
-#     template = 'network/tagDelete.html'
-#     redirect_url = 'tags_list_url'
-
-# def LikesPost(request):
-#     post = get_object_or_404(Post, id=request.POST.get('post_id'))
-#     post.likes.add(request.user)
-#     return HttpResponseRedirect(post.get_absolute_url())
 
 def posts_article(request):
     search_question = request.GET.get('search', '')

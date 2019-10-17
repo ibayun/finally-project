@@ -61,6 +61,3 @@ class CommentForm(ModelForm):
         fields = [
             'text'
         ]
-        # widgets = {
-        #     'text_comments': forms.Textarea(attrs={'class': 'form-control', 'size': 14, 'title': 'Enter body post'})
-        # }

@@ -40,12 +40,7 @@
 
 
         <p> дата создания - {{ post.article_date }} </p>
-<!--        <button type="button" class="btn btn-default btn-sm">-->
-<!--          <span class="glyphicon glyphicon-thumbs-up"> 0</span> Like-->
-<!--        </button>-->
-<!--        <button type="button" class="btn btn-default btn-sm">-->
-<!--          <span class="glyphicon glyphicon-thumbs-down"> 0</span> Dislike-->
-<!--        </button>-->
+
 
 
         {% if post.picture %}
@@ -60,9 +55,7 @@
                     {{ request.user.username }}
                     {{comment.id}}
                     {% if comment.author.username == request.user.username %}
-<!--                        <form action="{{ comments.get_delete_url }}" method="post">-->
                         <a href="{% url 'delete_comment' slug=post.slug id=comment.id %}">удалить</a>
-<!--                        </form>-->
                     {% endif %}
                     <p>{{ comment.text }} - текст коммента</p>
                     <p>{{ comment.author.username }} - автор</p>

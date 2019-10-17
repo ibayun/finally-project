@@ -21,15 +21,10 @@ from django.urls import include
 from .views import redirect_url
 
 urlpatterns = [
-    # path('', redirect_url, name='post_trends_url'),
     path('admin/', admin.site.urls),
     path('blog/', include('my_blog.urls')),
     path('', include('mainpage.urls')),
-    path('create_article/', include('article.urls')),
     path('news/', include('news.urls')),
-    path('friends/', include('friends.urls')),
-    path('message/', include('message.urls')),
-    # path('trands/', include('trands.urls')),
     path('', include('users.urls')),
     # path('post/<str:slug>/update', PostUpdate.as_view(), name='post_update_url')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

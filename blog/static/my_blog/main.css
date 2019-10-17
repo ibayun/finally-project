@@ -4,32 +4,99 @@
     font-family: 'Lora', serif;
 }
 
-header.nav{
-    padding-bottom: 10px;
+header.First_line_with_logo{
+    padding-bottom: 5px;
     border-bottom: 3px solid gray;
     position: fixed;
-    top: 3%;
+    top: 1%;
     width: 98%;
+
 
 }
 
-nav.top_menu{
+#footer{
+    font-family: 'Indie Flower', cursive;
+    height: 150px;
     width: 98%;
+    border-top: 3px solid gray;
+    position: fixed;
+    top: 94%;
+    text-align: center;
+}
+
+#main_body{
+    width: 99%;
+    height: 83.5%;
+    border: 1px solid black;
+    margin: 6.7% .5%;
+    position: fixed;
+
+}
+
+
+#content_body{
+    overflow: auto;
+    width: 100%;
+    height: 99%;
+
+    position: relative;
+
+
+    font-family: 'PT Sans', sans-serif;
+    background-image: url("/blog/media/image_for_web/hardwood-1851071_960_720.jpg");
+    background-size: contain;
+    padding: 5%;
+}
+
+
+
+#main_text_on_page {
+    position: absolute;
+    top: 50px;
+    left: 5%;
+    width: 60%;
+    text-indent: 1.5em;
+    background-color: rgba(128, 128, 128, 0.8);
+    font-size: 16pt;
+    color: #000000;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 20px;
+}
+
+.button_logout{
     display: inline;
+    position: fixed;
+    top: 2.5%;
+    right: 30px;
 }
+
+.button_register_login{
+    display: inline;
+    position: fixed;
+    top: 2.5%;
+    left: 300px;
+}
+
+
+
+
+
+
+
 
 form.button-nav{
     display: inline;
     position: fixed;
-    top: 20px;
-    left: 150px;
+    top: 2.5%;
+    left: 120px;
 }
 
 form.button-menu{
     display: inline;
     position: fixed;
-    top: 20px;
-    left: 297px;
+    top: 2.5%;
+    left: 300px;
 }
 
 #searching{
@@ -59,63 +126,13 @@ input.registration{
     left: 48%;
 }
 
-#main_body{
-    padding: 10px;
-    position: fixed;
-    top: 12%;
-    bottom: 7%;
-
-}
-
-#content_body{
-    overflow: auto;
-    width: 1050px;
-    height: 630px;
-
-    position: relative;
-
-
-    font-family: 'PT Sans', sans-serif;
-    margin-left: 10px;
-    margin-right: 10px;
-
-}
 
 
 
-#footer{
-    font-family: 'Indie Flower', cursive;
-    height: 150px;
-    width: 98%;
-    border-top: 3px solid gray;
-    position: fixed;
-    top: 92%;
-    text-align: center;
-}
 
-/*.card{*/
-/*    position: relative;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    min-width: 0;*/
-/*    word-wrap: break-word;*/
-/*    background-color: #fff;*/
-/*    background-clip: border-box;*/
-/*    border: 1px solid rgba(0,0,0,.125);*/
-/*    border-radius: .25rem;*/
-/*    padding: 10px;*/
-/*}*/
 
-/*.card-title{*/
-/*    padding: .75rem 1.25rem;*/
-/*    margin: 0px 0px;*/
-/*    background-color: rgba(0,0,0,.03);*/
-/*    border-bottom: 1px solid rgba(0,0,0,.125);*/
-/*}*/
 
-/*.card-text{*/
-/*    word-wrap: break-word;*/
-/*}*/
+
 
 .error {
     list-style: none;

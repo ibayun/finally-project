@@ -6,28 +6,21 @@
         <meta charset="UTF-8">
         <title id="title">
             {% block title %}
-
             {% endblock %}
         </title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
         <link href="{% static 'my_blog/main.css' %}" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lora|PT+Sans&display=swap" rel="stylesheet">
-
     </head>
-
     <body id="main_body">
-
-
-        <header class="nav">
+        <header class="First_line_with_logo">
             <a href="/" rel="">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ55hUJBQypwhxOO6dsifvOqoAWzJk2KHqO1ECcEnFRXAgkRTXpwA" alt="blog" class="logo" width="100" height="66">
             </a>
             <nav class="top_menu">
                 <form class="button-nav">
-                    <!--input type="button" value="main" onClick='location.href="http://127.0.0.1:8000/"'-->
-                    <input type="button" value="trends" onClick='location.href="http://127.0.0.1:8000/blog/trends/"'>
-                    <input type="button" value="news" onClick='location.href="http://127.0.0.1:8000/news/"'>
+                    <input class="btn btn-success" type="button" value="Тренды" onClick='location.href="http://127.0.0.1:8000/blog/trends/"'>
+                    <input class="btn btn-success"  type="button" value="Новости" onClick='location.href="http://127.0.0.1:8000/news/"'>
                 </form>
             <nav id=searching class="navbar navbar-light bg-light" action="{% url 'post_list_url' %}">
               <form class="form-inline">
@@ -38,19 +31,14 @@
             </nav>
         </header>
         <div id="content_body">
-
         {% block content %}
-
         {% endblock %}
-
         {% if is_paginated %}
-
             <nav aria-label="...">
                 <ul class="pagination">
                     <li class="page-item {% if not previous_url %} disabled {% endif %}">
                         <a class="page-link" href="{{ previous_url }}" tabindex="-1" aria-disabled="true">Previous</a>
                     </li>
-
                     {% for n in page_objects.paginator.page_range %}
                         {% if page_objects.number == n %}
                             <li class="page-item active">
@@ -73,26 +61,26 @@
             </nav>
         {% endif %}
 
-
-
-
-            <div class="header-tabs">
-                {% if user.is_authenticated %}
-                <p> Hi, {{user.username}} </p>
-                <nav class="top_menu">
-                    <form class="button-menu">
-                        <input type="button" value="my_blog" onClick='location.href="http://127.0.0.1:8000/blog/myblog/"'>
-                    </form>
-                </nav>
-
-                    <!--a href="http://127.0.0.1:8000/blog">blog</a--><!-- /cart-->
-                    <a href="/logout/">logout</a><!--/logout -->
-                {% else %}
-                    <a href="/register">register</a><!-- /register-->
-                    <a href="/accounts/login">login</a><!--/accounts/login -->
-                {% endif %}
-            </div>
+            {% if user.is_authenticated %}
+            <p> Hi, {{user.username}} </p>
+            <nav>
+                <form class="button-menu">
+                    <input class="btn btn-success"  type="button" value="Мой блог" onClick='location.href="http://127.0.0.1:8000/blog/myblog/"'>
+                </form>
+            </nav >
+                <form class="button_logout">
+                    <a class="btn btn-success" href="/logout/">Выйти</a>
+                </form>
+            {% else %}
+            <nav>
+                <form class="button_register_login">
+                <a class="btn btn-success" href="/register">Регистрация</a>
+                <a class="btn btn-success" href="/accounts/login">Войти</a>
+                </form>
+            </nav>
+            {% endif %}
         </div>
+
         <footer id="footer">
             Copyright Cris Brown
         </footer>

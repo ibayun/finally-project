@@ -1,20 +1,14 @@
 {% extends "mainpage/mainTemplates.html" %}
-
 {% block title %}
     Delete comment - ""
 {% endblock %}
-
 {% block content %}
     <form action ="{{ post.comment_delete_url }}" method="post">
         {% csrf_token %}
-
         <h2>
             Delete "{{ post.title }}"???
         </h2>
         <button type="submit" name="button">Yes</button>
         <input type="button" onclick="history.back();" value="No"/>
-
-
-
     </form>
 {% endblock %}
