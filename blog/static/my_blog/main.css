@@ -100,7 +100,19 @@ header.First_line_with_logo{
 .card{
     margin-bottom: 20px;
     width: 100%;
-    height: 350px;
+    height: 370px;
+}
+
+.card_my_blog{
+    margin-bottom: 20px;
+    width: 50%;
+    height: 100%;
+}
+
+#my_blog_list{
+    float: left;
+    margin-right: 15px;
+    width: 47%;
 }
 
 form.button-nav{
@@ -143,8 +155,6 @@ form.button-menu{
     float: left;
     margin-right: 15px;
     width: 23%;
-
-
 }
 
 #tag_format{
@@ -193,9 +203,9 @@ form.button-menu{
 }
 
 .pagination{
-    position: relative;
-    top:70%;
-    left: 95%;
+    position: fixed;
+    top:50%;
+    left: 3%;
     display: inline-block;
     speak: none;
     font-style: normal;
@@ -213,6 +223,10 @@ form.button-menu{
     color: white;
     background-color: grey;
 
+    margin: 5px;
+}
+
+#first_but{
     margin: 5px;
 }
 

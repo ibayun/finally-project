@@ -19,6 +19,7 @@
                             <img class="card-img-top" src="{{ MEDIA_URL }}{{ post.picture }}"
                                  alt="Мы уже занимаемся поиском вашего изображения">
                         {% endif %}
+
                         <h5 class="card-title">{{post.article_title}}</h5>
                         <h6 class="card-text">{{post.article_text | truncatechars:60 }}</h6>
                         <a id="btn_read" href="{{ post.get_absolute_url }}" class="btn btn-dark">Читать статью</a>
