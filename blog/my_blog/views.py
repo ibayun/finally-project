@@ -76,7 +76,7 @@ def my_blog_list(request):
     else:
         next_url = ''
 
-    return render(request, 'network/index.html', context={
+    return render(request, 'network/myBlog.html', context={
         'page_objects': page,
         'is_paginated': is_paginated,
         'next_url': next_url,
@@ -103,7 +103,7 @@ class PostUpdate(ObjectUpdateMixin, View):
 class PostDelete(ObjectDeleteMixin, View):
     model = Post
     template = 'network/postDelete.html'
-    redirect_url = 'post_list_url'
+    redirect_url = 'my_blog_url'
 
 
 class TagDelete(ObjectDeleteMixin, View):
@@ -147,7 +147,6 @@ def posts_article(request):
 
 def delete_comment(request, id, slug):
     try:
-
         comment = Comments.objects.get(id=id)
         comment.delete()
         return redirect('post_detail_url', slug)

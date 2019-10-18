@@ -24,7 +24,7 @@
                 </form>
             <nav id=searching class="navbar navbar-light bg-light" action="{% url 'post_list_url' %}">
               <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Найти" aria-label="Search" name="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
             </nav>
@@ -62,10 +62,10 @@
         {% endif %}
 
             {% if user.is_authenticated %}
-            <p> Hi, {{user.username}} </p>
+            <p id="name_user"> Здравствуйте, {{user.username}} </p>
             <nav>
                 <form class="button-menu">
-                    <input class="btn btn-success"  type="button" value="Мой блог" onClick='location.href="http://127.0.0.1:8000/blog/myblog/"'>
+                    <input class="btn btn-success push_but"  type="button" value="Мой блог" onClick='location.href="http://127.0.0.1:8000/blog/myblog/"'>
                 </form>
             </nav >
                 <form class="button_logout">

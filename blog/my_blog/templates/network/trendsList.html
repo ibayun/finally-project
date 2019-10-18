@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block content %}
-    <div><a href="{% url 'tags_list_url' %}">tags</a> </div>
-    <div><a href="{% url 'tag_create_url' %}">create tag</a> </div>
-    <div><a href="{% url 'post_create_url' %}">create post</a> </div>
+    <div class="button_create_post_tag">
+        <div><a type="button" class="btn btn-dark" href="{% url 'tags_list_url' %}">Теги</a> </div>
+        <div><a type="button" class="btn btn-dark" href="{% url 'tag_create_url' %}">Создать тег</a> </div>
+        <div><a type="button" class="btn btn-dark" href="{% url 'post_create_url' %}">Создать пост</a> </div>
+    </div>
     <div id="">
         {% for post in posts %}
             <div class="card">

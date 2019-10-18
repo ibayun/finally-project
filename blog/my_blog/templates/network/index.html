@@ -5,10 +5,12 @@
 {% endblock %}
 
 {% block content %}
-    <div><a href="{% url 'tags_list_url' %}">tags</a> </div>
-    <div><a href="{% url 'tag_create_url' %}">create tag</a> </div>
-    <div><a href="{% url 'post_create_url' %}">create post</a> </div>
-    <div id="">
+    <div class="button_create_post_tag">
+        <a type="button" class=" btn btn-dark" href="{% url 'tags_list_url' %}">Теги</a>
+        <a type="button" class="btn btn-dark" href="{% url 'tag_create_url' %}">Создать тег</a>
+        <a type="button" class="btn btn-dark" href="{% url 'post_create_url' %}">Создать пост</a>
+    </div>
+    <div id="tags_list">
         {% for post in page_objects.object_list %}
             {% include 'network/includes/blog_template.html' %}
         {% endfor %}
