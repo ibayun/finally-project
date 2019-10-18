@@ -24,7 +24,7 @@
 
                             <h5 class="card-title">{{post.article_title}}</h5>
                             <h6 class="card-text">{{post.article_text | truncatechars:60 }}</h6>
-                            <a href="{{ post.get_absolute_url }}" class="btn btn-dark">Читать статью</a>
+                            <a id="btn_read" href="{{ post.get_absolute_url }}" class="btn btn-dark">Читать статью</a>
                         </div>
 
 
@@ -33,6 +33,8 @@
 
                                 {%  if post.tags.all|length == 0 %}
                                     <a class="card-footer small">Тегов нет</a>
+                                {% else %}
+                                    <a class="card-footer small">Теги внутри</a>
                                 {% endif %}
 <!--                                    {% for tag in post.tags.all %}-->
 <!--                                        <a id="tag_format" href="{{ tag.get_absolute_url }}">{{ tag.tag_title | truncatechars:7 }},</a>-->

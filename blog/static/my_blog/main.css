@@ -20,9 +20,10 @@ header.First_line_with_logo{
     width: 60%;
     /*border-top: 3px solid gray;*/
     position: fixed;
-    top: 94%;
+    top: 93%;
     text-align: center;
     left: 20%;
+    font-size: 18px;
 }
 
 #main_body{
@@ -34,6 +35,11 @@ header.First_line_with_logo{
 
 }
 
+
+#btn_read{
+    position: absolute;
+    bottom: 15%;
+}
 
 #content_body{
     overflow: auto;
