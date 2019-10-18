@@ -22,10 +22,9 @@ pip install Pillow
 5) Заполнить простую форму регистрации.
 6) Пользуйтесь.
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+## Свяь
+По вопросам сотрудничества, а так же замеченных багах/неисправностях обращаться на почту i.korniyenko@list.ru.
+А так же в телеграмм @i_bayun
 
-Please make sure to update tests as appropriate.
-
-## License
+## Лицензия
 [MIT](https://choosealicense.com/licenses/mit/)
