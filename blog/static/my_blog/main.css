@@ -50,14 +50,14 @@ header.First_line_with_logo{
     position: fixed;
     top: 13%;
     right: 2%;
-    width: 11%;
-    text-indent: 10px;
+
+    text-indent: 20px;
     background-color: rgba(82, 82, 82, 0.89);
-    font-size: 18px;
+    font-size: 22px;
     color: #ffffff;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 20px;
+    margin: 20px 40px;
+    padding: 20px 35px 20px 15px;
+    border-radius: 30px;
 }
 
 #main_text_on_page {
@@ -306,4 +306,24 @@ input.registration{
     color: #d40015;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+
+#main_register_text{
+    position: absolute;
+    top: -20px;
+    left: 5%;
+    width: 38%;
+    text-indent: 1.5em;
+    background-color: rgba(128, 128, 128, 0.8);
+    font-size: 16pt;
+    color: #000000;
+    margin: 5%;
+    padding: 6%;
+    border-radius: 20px;
+}
+
+#submit-btn_register{
+    position: absolute;
+    left: 310px;
 }
