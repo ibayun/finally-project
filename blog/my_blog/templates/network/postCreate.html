@@ -1,12 +1,10 @@
 {% extends "mainpage/mainTemplates.html" %}
 
-
 {% block title %}
     create Tag
 {% endblock %}
 
 {% block content %}
-
     <form action="{% url 'post_create_url' %}" enctype="multipart/form-data" method="post">
         {% csrf_token %}
         <div id="post_create">

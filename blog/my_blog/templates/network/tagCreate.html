@@ -1,31 +1,21 @@
 {% extends "mainpage/mainTemplates.html" %}
 
-
 {% block title %}
     create Tag
 {% endblock %}
 
 {% block content %}
-
     <form action="{% url 'tag_create_url' %}" method="post">
         {% csrf_token %}
-
-
             <div class="form-group">
                 {% if field.errors %}
                     <div class="alert alert-errors">
                         {{ field.errors }}
                     </div>
                 {% endif %}
-
-
             </div>
-
-
-
         {{ form.tag_title}}
         {{ form.slug}}
         <button type="submit" class="btn btn-primary">Create Tag</button>
     </form>
-
 {% endblock %}

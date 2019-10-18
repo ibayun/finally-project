@@ -6,19 +6,15 @@
 
 header.First_line_with_logo{
     padding-bottom: 5px;
-    /*border-bottom: 3px solid gray;*/
     position: fixed;
     top: 1%;
     width: 98%;
-
-
 }
 
 #footer{
     font-family: 'Indie Flower', cursive;
     height: 150px;
     width: 60%;
-    /*border-top: 3px solid gray;*/
     position: fixed;
     top: 93%;
     text-align: center;
@@ -29,10 +25,8 @@ header.First_line_with_logo{
 #main_body{
     width: 99%;
     height: 83%;
-    /*border: 1px solid black;*/
     margin: 5% .5%;
     position: fixed;
-
 }
 
 
@@ -45,13 +39,9 @@ header.First_line_with_logo{
     overflow: auto;
     width: 100%;
     height: 99%;
-
     position: relative;
-
-
     font-family: 'PT Sans', sans-serif;
     background-image: url("/blog/media/image_for_web/hardwood-1851071_960_720.jpg");
-    /*background-size: contain;*/
     padding: 5%;
 }
 
@@ -99,8 +89,6 @@ header.First_line_with_logo{
     left: 300px;
 }
 
-
-
 .button_create_post_tag{
     display: inline-block;
     position: fixed;
@@ -113,9 +101,7 @@ header.First_line_with_logo{
     margin-bottom: 20px;
     width: 100%;
     height: 350px;
-
 }
-
 
 form.button-nav{
     display: inline;
@@ -154,9 +140,9 @@ form.button-menu{
 
 
 #trends_list{
-    float: left; /* Обтекание по правому краю */
-    margin-right: 15px; /* Отступ справа */
-    width: 23%; /* Ширина блока */
+    float: left;
+    margin-right: 15px;
+    width: 23%;
 
 
 }
@@ -301,22 +287,9 @@ input.registration{
     left: 48%;
 }
 
-
-
-
-
-
-
-
-
 .error {
     list-style: none;
     color: #d40015;
     margin-top: 0;
     margin-bottom: 0;
-
 }
-
-
-
-

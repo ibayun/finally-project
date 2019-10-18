@@ -8,6 +8,7 @@
             {% block title %}
             {% endblock %}
         </title>
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="{% static 'my_blog/main.css' %}" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lora|PT+Sans&display=swap" rel="stylesheet">
@@ -34,8 +35,34 @@
         {% block content %}
         {% endblock %}
         {% if is_paginated %}
-<!--            <nav aria-label="...">-->
-                <ul class="pagination">
+            <ul class="pagination">
+                <li class="page-item {% if not previous_url %} disabled {% endif %}">
+                    <a class="page-link" href="{{ previous_url }}" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                {% for n in page_objects.paginator.page_range %}
+                    {% if page_objects.number == n %}
+                        <li class="page-item active">
+                            <a class="page-link " href="?page={{ n }}">{{ n }}
+                            <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                    {% elif n > page_objects.number|add:-4  and n < page_objects.number|add:4 %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ n }}">{{ n }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                <li class="page-item {% if not next_url %} disabled {% endif %}">
+                    <a class="page-link" href="{{ next_url }}" tabindex="+1" aria-disabled="true">Next</a>
+                </li>
+                </li>
+            </ul>
+        {% endif %}
+            {% if user.is_authenticated %}
+            <p id="name_user">{{user.username}} </p>
+            <nav>
+            <ul class="pagination">
                     <li class="page-item {% if not previous_url %} disabled {% endif %}">
                         <a class="page-link" href="{{ previous_url }}" tabindex="-1" aria-disabled="true">Previous</a>
                     </li>
@@ -57,14 +84,7 @@
                         <a class="page-link" href="{{ next_url }}" tabindex="+1" aria-disabled="true">Next</a>
                     </li>
                     </li>
-                </ul>
-<!--            </nav>-->
-        {% endif %}
-
-            {% if user.is_authenticated %}
-            <p id="name_user">{{user.username}} </p>
-            <nav>
-                <form class="button-menu">
+                </ul>    <form class="button-menu">
                     <input class="btn btn-success push_but"  type="button" value="Мой блог" onClick='location.href="http://127.0.0.1:8000/blog/myblog/"'>
                 </form>
             </nav >
@@ -80,13 +100,8 @@
             </nav>
             {% endif %}
         </div>
-
         <footer id="footer">
            Many articles and books have been written about us, so we did not start a separate article. You can search the Internet. We work a couple of thousand light-years. For questions here. Get money - here. Collaboration is there
         </footer>
     </body>
 </html>
-
-
-
-

@@ -1,28 +1,22 @@
 {% extends "network/index.html" %}
 
-
-
-
 {% block title %}
     {{ post.article_title }}
 {% endblock %}
 
 {% block content %}
-
     {% if post.created_by == user %}
         <div class="button_create_post_tag">
             <a type="button" class=" btn btn-dark btn-block" href="{{ post.get_update_url }}">Исправить пост</a>
             <a type="button" class=" btn btn-dark btn-block" href="{{ post.get_delete_url }}">Удалить пост</a>
         </div>
     {% endif %}
-
-
     <div id="post_detail">
         <div id="text_post_detail"> <h2>{{ post.article_title }}</h2>
-                {% if post.picture %}
-                    <div> <img  width="100%" src="{{ MEDIA_URL }}{{ post.picture }}"
-                                alt="Ваше изображение потерялось. Но мы его обязательно найлдем"></div>
-                {% endif %}
+            {% if post.picture %}
+                <div> <img  width="100%" src="{{ MEDIA_URL }}{{ post.picture }}"
+                            alt="Ваше изображение потерялось. Но мы его обязательно найлдем"></div>
+            {% endif %}
              <div><h4><p>{{ post.article_text }}</p></h4></div>
             <h6><p>{{ post.created_by }}</p>
                 <p>
@@ -39,35 +33,29 @@
                 </p>
                 <p>{{ post.article_date }} </p></h6>
         </div>
-                <h6>
-                {% if user.is_authenticated %}
-                    {% for comment in comments %}
-                        <div id="comment_block">
-                            <p>{{ comment.author.username }}:
-                                {% if comment.author.username == request.user.username %}
-                                <a  id="delete_comment_user"
-                                   href="{% url 'delete_comment' slug=post.slug id=comment.id %}">
-                                    <img src="/blog/media/image_for_web/x-3x.png">
-                                </a>
-                                {% endif %}
-                            </p>
-
-
-                            <p>{{ comment.text }}</p>
-
-                            <p id="date_comment_detail">{{ comment.date_comments }}</p>
-                            <div id="text_comment_detail"></div>
-                        </div>
-                    {% endfor %}
-
-                <form action="" method="post" >
-                    {% csrf_token %}
-                        {{ form.text }}
-
-                    <input class="btn btn-dark" type="submit" value="Отправить">
-
-                </form>
-                {% endif %}
-            </h6>
+            <h6>
+            {% if user.is_authenticated %}
+                {% for comment in comments %}
+                    <div id="comment_block">
+                        <p>{{ comment.author.username }}:
+                            {% if comment.author.username == request.user.username %}
+                            <a  id="delete_comment_user"
+                               href="{% url 'delete_comment' slug=post.slug id=comment.id %}">
+                                <img src="/blog/media/image_for_web/x-3x.png">
+                            </a>
+                            {% endif %}
+                        </p>
+                        <p>{{ comment.text }}</p>
+                        <p id="date_comment_detail">{{ comment.date_comments }}</p>
+                        <div id="text_comment_detail"></div>
+                    </div>
+                {% endfor %}
+            <form action="" method="post" >
+                {% csrf_token %}
+                    {{ form.text }}
+                <input class="btn btn-dark" type="submit" value="Отправить">
+            </form>
+            {% endif %}
+        </h6>
     </div>
 {% endblock %}
