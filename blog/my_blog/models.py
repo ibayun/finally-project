@@ -1,6 +1,3 @@
-from django.conf import settings
-from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
-from django.contrib.contenttypes.models import ContentType
 from users.models import User
 from django.db import models
 from django.shortcuts import reverse
@@ -21,9 +18,6 @@ class Post(models.Model):
     article_date = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
     picture = models.ImageField(null=True, blank=True, upload_to='image/', verbose_name='image')
-    comments = GenericRelation('comments')
-    # likes = models.PositiveIntegerField(default=0)
-    # dislikes = models.PositiveIntegerField(default=0)
 
     def get_absolute_url(self):
         return reverse('post_detail_url', kwargs={'slug': self.slug})
@@ -33,10 +27,6 @@ class Post(models.Model):
 
     def get_delete_url(self):
         return reverse('post_delete_url', kwargs={'slug': self.slug})
-
-    # def get_delete_comment_url(self):
-    #     return reverse('comment_delete_url', kwargs={'slug': self.slug})
-
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -59,12 +49,6 @@ class Tag(models.Model):
     def get_absolute_url(self):
         return reverse('tag_detail_url', kwargs={'slug': self.slug})
 
-    # def get_update_url(self):
-    #     return reverse('tag_update_url', kwargs={'slug': self.slug})
-    #
-    # def get_delete_url(self):
-    #     return reverse('tag_delete_url', kwargs={'slug': self.slug})
-
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = str(int(time()))
@@ -80,9 +64,5 @@ class Tag(models.Model):
 class Comments(models.Model):
     author = models.ForeignKey(User, verbose_name='Пользователь', on_delete='CASCADE')
     post = models.ForeignKey(Post, verbose_name='Заметка', on_delete='CASCADE')
-    text = models.TextField()
+    text = models.TextField(verbose_name='Текст')
     date_comments = models.DateTimeField(auto_now_add=True)
-
-    # type_comments = models.ForeignKey(GenericForeignKey, on_delete='CASCADE')
-    # id_comments = models.PositiveIntegerField()
-    # content_comment = GenericForeignKey('type_comments', 'id_comments')

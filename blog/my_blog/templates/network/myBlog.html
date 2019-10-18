@@ -1,16 +1,28 @@
 {% extends "mainpage/mainTemplates.html" %}
 
 {% block title %}
-    blog list
+    My blog
 {% endblock %}
 
 {% block content %}
-    <div><a href="{% url 'tags_list_url' %}">tags</a> </div>
-    <div><a href="{% url 'tag_create_url' %}">create tag</a> </div>
-    <div><a href="{% url 'post_create_url' %}">create post</a> </div>
-    <div id="">
-        {% for post in posts %}
+    <div class="button_create_post_tag">
+        <a type="button" class=" btn btn-dark  btn-block" href="{% url 'tags_list_url' %}">Теги</a>
+        <a type="button" class="btn btn-dark  btn-block" href="{% url 'tag_create_url' %}">Создать тег</a>
+        <a type="button" class="btn btn-dark  btn-block" href="{% url 'post_create_url' %}">Создать пост</a>
+    </div>
+    <div id="tags_list">
+        {% for post in page_objects.object_list %}
             {% include 'network/includes/blog_template.html' %}
+        {% empty %}
+            <h3>Вы еще не создали не создавали статей.</h3>
+            <p>Чтобы создать статью/пост нажмите вверху "Создать пост".
+            Или <a link="red" href="{% url 'post_create_url' %}" style="color: white"> нажмите сюда</a>.</p>
+            <p>Для просмотра <a href="http://127.0.0.1:8000/blog/trends/" style="color: white"> чужих статей</a>.</p>
+            <p>Чтобы создать <a href="{% url 'tag_create_url' %}" style="color: white"> тег</a>.</p>
+            <p>Посмотреть <a href="{% url 'tags_list_url' %}" style="color: white">теги</a> и статьи по ним.</p>
         {% endfor %}
     </div>
 {% endblock %}
+
+
+

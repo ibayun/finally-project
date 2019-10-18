@@ -16,20 +16,18 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.urls import path
 from django.urls import include
+from django.views.generic import RedirectView
+
 from .views import redirect_url
 
 urlpatterns = [
-    # path('', redirect_url, name='post_trends_url'),
     path('admin/', admin.site.urls),
     path('blog/', include('my_blog.urls')),
     path('', include('mainpage.urls')),
-    path('create_article/', include('article.urls')),
     path('news/', include('news.urls')),
-    path('friends/', include('friends.urls')),
-    path('message/', include('message.urls')),
-    # path('trands/', include('trands.urls')),
     path('', include('users.urls')),
     # path('post/<str:slug>/update', PostUpdate.as_view(), name='post_update_url')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

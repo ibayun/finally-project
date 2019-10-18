@@ -1,28 +1,26 @@
 {% extends "mainpage/mainTemplates.html" %}
 
-
 {% block title %}
     create Tag
 {% endblock %}
 
 {% block content %}
-
     <form action="{% url 'post_create_url' %}" enctype="multipart/form-data" method="post">
         {% csrf_token %}
-
-            {% for field in form %}
-                <div class="form-group">
-                    {% if field.errors %}
-                        <div class="alert alert-danger">
-                            {{ field.errors }}
-                        </div>
-                    {% endif %}
-                    {{ field.label }}
-                    {{ field }}
-
-                </div>
-            {% endfor %}
-            <button type="submit" class="btn btn-primary">Create</button>
+        <div id="post_create">
+            <h3>  Название
+                {{ form.article_title }}
+            </h3>
+            <h3>  Текст
+                {{ form.article_text }}
+            </h3>
+            <h3> Теги
+                {{ form.tags }}
+            </h3>
+            <h5>
+                {{ form.picture }}
+            </h5>
+            <button type="submit" class="btn btn-dark">Создать</button>
+        </div>
     </form>
-
 {% endblock %}

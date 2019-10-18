@@ -5,8 +5,10 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Tags</h1>
+<div id="tags_list" >
+    <h4>Вам доступны следующие теги:</h4>
     {% for tag in tags %}
-        <h3><a href="{{ tag.get_absolute_url }}"> {{ tag.tag_title }}</a></h3>
+        <a id="tags_list_btn" type="button" class="btn btn-warning" href="{{ tag.get_absolute_url }}"> {{ tag.tag_title }}</a>
     {% endfor %}
+</div>
 {% endblock %}

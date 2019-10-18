@@ -4,40 +4,282 @@
     font-family: 'Lora', serif;
 }
 
-header.nav{
-    padding-bottom: 10px;
-    border-bottom: 3px solid gray;
+header.First_line_with_logo{
+    padding-bottom: 5px;
     position: fixed;
-    top: 3%;
+    top: 1%;
     width: 98%;
-
 }
 
-nav.top_menu{
-    width: 98%;
+#footer{
+    font-family: 'Indie Flower', cursive;
+    height: 150px;
+    width: 60%;
+    position: fixed;
+    top: 93%;
+    text-align: center;
+    left: 20%;
+    font-size: 18px;
+}
+
+#main_body{
+    width: 99%;
+    height: 83%;
+    margin: 5% .5%;
+    position: fixed;
+}
+
+
+#btn_read{
+    position: absolute;
+    bottom: 15%;
+}
+
+#content_body{
+    overflow: auto;
+    width: 100%;
+    height: 99%;
+    position: relative;
+    font-family: 'PT Sans', sans-serif;
+    background-image: url("/blog/media/image_for_web/hardwood-1851071_960_720.jpg");
+    padding: 5%;
+}
+
+#name_user{
     display: inline;
+    position: fixed;
+    top: 13%;
+    right: 2%;
+
+    text-indent: 20px;
+    background-color: rgba(82, 82, 82, 0.89);
+    font-size: 22px;
+    color: #ffffff;
+    margin: 20px 40px;
+    padding: 20px 35px 20px 15px;
+    border-radius: 30px;
+}
+
+#main_text_on_page {
+    position: absolute;
+    top: 50px;
+    left: 5%;
+    width: 60%;
+    text-indent: 1.5em;
+    background-color: rgba(128, 128, 128, 0.8);
+    font-size: 16pt;
+    color: #000000;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 20px;
+}
+
+.button_logout{
+    display: inline;
+    position: fixed;
+    bottom: 2%;
+    left: 50px;
+    z-index: 100;
+}
+
+.button_register_login{
+    display: inline;
+    position: fixed;
+    top: 2.5%;
+    left: 300px;
+}
+
+.button_create_post_tag{
+    display: inline-block;
+    position: fixed;
+    top: 13%;
+    left: 1%;
+    width: 150px;
+}
+
+.card{
+    margin-bottom: 20px;
+    width: 100%;
+    height: 370px;
+}
+
+.card_my_blog{
+    margin-bottom: 20px;
+    width: 50%;
+    height: 100%;
+}
+
+#my_blog_list{
+    float: left;
+    margin-right: 15px;
+    width: 47%;
 }
 
 form.button-nav{
     display: inline;
     position: fixed;
-    top: 20px;
-    left: 150px;
+    top: 2.5%;
+    left: 120px;
 }
 
 form.button-menu{
     display: inline;
     position: fixed;
-    top: 20px;
-    left: 297px;
+    top: 2.5%;
+    left: 300px;
 }
 
 #searching{
     position: fixed;
-    top: 20px;
-    right: 100px;
+    top: 1.5%;
+    right: 30px;
 }
 
+#tags_list{
+    display: inline-block;
+    position: absolute;
+    top: 50px;
+    left: 7%;
+    width: 75%;
+    /*text-indent: 1.5em;*/
+    background-color: rgba(110, 110, 110, 0.8);
+    font-size: 16pt;
+    color: #000000;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 40px;
+}
+
+
+#trends_list{
+    float: left;
+    margin-right: 15px;
+    width: 23%;
+}
+
+#tag_format{
+    display: inline-block;
+    font-size: medium;
+    padding-left: 3%;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    float: left;
+    margin-right: 3px;
+    width: 100%;
+}
+
+#post_detail{
+    position: absolute;
+    top: 20px;
+    left: 17%;
+    width: 55%;
+    border-bottom: 3px;
+    background-color: rgba(80, 80, 80, 0.8);
+    font-size: 16pt;
+    color: white;
+    margin: 30px;
+    padding: 30px;
+    border-radius: 40px;
+}
+
+
+#post_create{
+    position: absolute;
+    top: -20px;
+    left: 17%;
+    width: 55%;
+    /*text-indent: 1.5em;*/
+    background-color: rgba(110, 110, 110, 0.8);
+    font-size: 16pt;
+    color: #000000;
+    margin: 3%;
+    padding: 5%;
+    border-radius: 40px;
+}
+
+#text_post_detail{
+    border-bottom: 3px rgba(0, 10, 0, 0.39) solid;
+    margin-bottom: 20px;
+}
+
+.pagination{
+    position: fixed;
+    top:50%;
+    left: 3%;
+    display: inline-block;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    background-color: grey;
+}
+
+.page-item{
+    color: grey;
+    background-color: grey;
+}
+
+.page-link{
+    color: white;
+    background-color: grey;
+
+    margin: 5px;
+}
+
+#first_but{
+    margin: 5px;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #4e4e4e;
+  border-color: #AEFF5E;
+}
+
+#update_post{
+    /*padding: 15px;*/
+    margin: 20px;
+}
+
+#text_comment_detail{
+       border-bottom: 1px #808080 solid;
+}
+
+.form-group{
+    width: 400px;
+    height: 45px;
+}
+
+
+#delete_comment_user{
+    position: relative;
+    top:0px;
+    left: 93%;
+    display: inline-block;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+}
+
+#date_comment_detail{
+    position: relative;
+    left: 70%;
+    width: 200px;
+}
+
+
+#comment_block{
+    padding: 5px;
+    width: 95%;
+}
+
+#tags_list_btn{
+    color: #005c00;
+    padding: 15px;
+    margin: 8px;
+}
 
 #index_login{
     width: 300px;
@@ -59,69 +301,29 @@ input.registration{
     left: 48%;
 }
 
-#main_body{
-    padding: 10px;
-    position: fixed;
-    top: 12%;
-    bottom: 7%;
-
-}
-
-#content_body{
-    overflow: auto;
-    width: 1050px;
-    height: 630px;
-
-    position: relative;
-
-
-    font-family: 'PT Sans', sans-serif;
-    margin-left: 10px;
-    margin-right: 10px;
-
-}
-
-
-
-#footer{
-    font-family: 'Indie Flower', cursive;
-    height: 150px;
-    width: 98%;
-    border-top: 3px solid gray;
-    position: fixed;
-    top: 92%;
-    text-align: center;
-}
-
-/*.card{*/
-/*    position: relative;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    min-width: 0;*/
-/*    word-wrap: break-word;*/
-/*    background-color: #fff;*/
-/*    background-clip: border-box;*/
-/*    border: 1px solid rgba(0,0,0,.125);*/
-/*    border-radius: .25rem;*/
-/*    padding: 10px;*/
-/*}*/
-
-/*.card-title{*/
-/*    padding: .75rem 1.25rem;*/
-/*    margin: 0px 0px;*/
-/*    background-color: rgba(0,0,0,.03);*/
-/*    border-bottom: 1px solid rgba(0,0,0,.125);*/
-/*}*/
-
-/*.card-text{*/
-/*    word-wrap: break-word;*/
-/*}*/
-
 .error {
     list-style: none;
-    color: #d47d77;
+    color: #d40015;
     margin-top: 0;
     margin-bottom: 0;
-
 }
 
+
+#main_register_text{
+    position: absolute;
+    top: -20px;
+    left: 5%;
+    width: 38%;
+    text-indent: 1.5em;
+    background-color: rgba(128, 128, 128, 0.8);
+    font-size: 16pt;
+    color: #000000;
+    margin: 5%;
+    padding: 6%;
+    border-radius: 20px;
+}
+
+#submit-btn_register{
+    position: absolute;
+    left: 310px;
+}

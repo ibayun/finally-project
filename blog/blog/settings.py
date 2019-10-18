@@ -12,24 +12,18 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '@+94t@2%%n*h(yh1(wovkqrk$xnqwb1j-&f08at-3pi1-$637%'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
+
 
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,9 +36,6 @@ INSTALLED_APPS = [
     'mainpage',
     'article',
     'news',
-    'friends',
-    'message',
-    'trands',
     'users.apps.UsersConfig',
 ]
 
@@ -83,9 +74,6 @@ APPEND_SLASH = False
 WSGI_APPLICATION = 'blog.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -94,8 +82,7 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = 'users.User'
-# Password validation
-# https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -114,12 +101,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 INCORRECT_ATTEMPTS_LIMIT = 3
 
-# Internationalization
-# https://docs.djangoproject.com/en/2.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Minsk'
 
 USE_I18N = True
 
@@ -132,6 +116,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),

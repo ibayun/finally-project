@@ -1,83 +1,61 @@
 {% extends "network/index.html" %}
 
-
-
-
 {% block title %}
     {{ post.article_title }}
 {% endblock %}
 
 {% block content %}
-
-{% if post.created_by == user %}
-
-    <a href="{{ post.get_update_url }}">Edit post</a>
-    <a href="{{ post.get_delete_url }}">Delete post</a>
-{% endif %}
-
-    <h1 class="mt-5">
-
-        {{ post.article_title }}
-    </h1>
-    <p>
-
-        {{ post.article_text }}
-
-    </p>
-    <div>
-        <p> автор - {{ post.created_by }}</p>
-
-        {% if post.tags.all|length == 1  %}
-             Тег -
-        {% elif post.tags.all|length >= 2 %}
-            Теги -
-        {% else%}
-            Тегов нет
-        {% endif %}
-            {% for tag in post.tags.all %}
-                <a href="{{ tag.get_absolute_url }}">{{ tag.tag_title }}</a>
-            {% endfor %}
-
-
-        <p> дата создания - {{ post.article_date }} </p>
-<!--        <button type="button" class="btn btn-default btn-sm">-->
-<!--          <span class="glyphicon glyphicon-thumbs-up"> 0</span> Like-->
-<!--        </button>-->
-<!--        <button type="button" class="btn btn-default btn-sm">-->
-<!--          <span class="glyphicon glyphicon-thumbs-down"> 0</span> Dislike-->
-<!--        </button>-->
-
-
-        {% if post.picture %}
-           <p> <img src="{{ MEDIA_URL }}{{ post.picture }}"></p>
-        {% endif %}
-        <p> комменты - {{ post.article_date }} </p>
-        {% if user.is_authenticated %}
-            {% for comment in comments %}
-
-                <div>
-                    {{ comment.author.username }}
-                    {{ request.user.username }}
-                    {{comment.id}}
-                    {% if comment.author.username == request.user.username %}
-<!--                        <form action="{{ comments.get_delete_url }}" method="post">-->
-                        <a href="{% url 'delete_comment' slug=post.slug id=comment.id %}">удалить</a>
-<!--                        </form>-->
-                    {% endif %}
-                    <p>{{ comment.text }} - текст коммента</p>
-                    <p>{{ comment.author.username }} - автор</p>
-                    <p>{{ comment.date_comments }} - время создания</p>
-                    <p>. </p>
-                    <p>. </p>
-                </div>
-
-            {% endfor %}
+    {% if post.created_by == user %}
+        <div class="button_create_post_tag">
+            <a type="button" class=" btn btn-dark btn-block" href="{{ post.get_update_url }}">Исправить пост</a>
+            <a type="button" class=" btn btn-dark btn-block" href="{{ post.get_delete_url }}">Удалить пост</a>
+        </div>
+    {% endif %}
+    <div id="post_detail">
+        <div id="text_post_detail"> <h2>{{ post.article_title }}</h2>
+            {% if post.picture %}
+                <div> <img  width="100%" src="{{ MEDIA_URL }}{{ post.picture }}"
+                            alt="Ваше изображение потерялось. Но мы его обязательно найлдем"></div>
+            {% endif %}
+             <div><h4><p>{{ post.article_text }}</p></h4></div>
+            <h6><p>{{ post.created_by }}</p>
+                <p>
+                {% if post.tags.all|length == 1  %}
+                     Тег -
+                {% elif post.tags.all|length >= 2 %}
+                    Теги -
+                {% else%}
+                    Тегов нет
+                {% endif %}
+                    {% for tag in post.tags.all %}
+                        <a style="color: #76cd55" href="{{ tag.get_absolute_url }}">{{ tag.tag_title }} | </a>
+                    {% endfor %}
+                </p>
+                <p>{{ post.article_date }} </p></h6>
+        </div>
+            <h6>
+            {% if user.is_authenticated %}
+                {% for comment in comments %}
+                    <div id="comment_block">
+                        <p>{{ comment.author.username }}:
+                            {% if comment.author.username == request.user.username %}
+                            <a  id="delete_comment_user"
+                               href="{% url 'delete_comment' slug=post.slug id=comment.id %}">
+                                <img src="/blog/media/image_for_web/x-3x.png">
+                            </a>
+                            {% endif %}
+                        </p>
+                        <p>{{ comment.text }}</p>
+                        <p id="date_comment_detail">{{ comment.date_comments }}</p>
+                        <div id="text_comment_detail"></div>
+                    </div>
+                {% endfor %}
             <form action="" method="post" >
                 {% csrf_token %}
-                    {{ form }}
-                <button type="submit"> Оставить </button>
+                    {{ form.text }}
+                <input class="btn btn-dark" type="submit" value="Отправить">
             </form>
-        {% endif %}
+            {% endif %}
+        </h6>
     </div>
-
 {% endblock %}

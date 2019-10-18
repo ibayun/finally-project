@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, logout, login
 from django.conf import settings
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_GET
 
 from users.forms import RegistrationForm
 from users.models import User
@@ -50,7 +48,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return render(request, "users/registerPage.html")
+            return redirect("/")
     else:
         form = RegistrationForm()
     return render(request, "users/registerPage.html", context={

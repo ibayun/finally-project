@@ -8,24 +8,12 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 
-from .utils import ObjectUpdateMixin, ObjectCreateMixin, ObjectDeleteMixin, ObjectDeleteCommentMixin
-
+from .utils import ObjectUpdateMixin, ObjectCreateMixin, ObjectDeleteMixin
 from .forms import TagForm, PostForm, CommentForm
 
 from .models import Post, Tag, Comments
 
 from django.core.paginator import Paginator
-
-
-#  def post_detail(request, slug):
-#     post = Post.objects.get(slug__iexact=slug)
-#     comment = Comments.odjects.filter(Post=slug)
-#     form = CommentForm()
-#     return render(request, 'network/post_detail.html', context={
-#         'post': post,
-#         "comments": comment,
-#         "form": form,
-#     })
 
 
 def post_detail(request, slug):
@@ -73,7 +61,7 @@ def my_blog_list(request):
     else:
         posts = (Post.objects.filter(created_by_id=request.user.id))
 
-    paginator = Paginator(posts, 2)
+    paginator = Paginator(posts, 4)
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)
     is_paginated = page.has_other_pages()
@@ -88,7 +76,7 @@ def my_blog_list(request):
     else:
         next_url = ''
 
-    return render(request, 'network/index.html', context={
+    return render(request, 'network/myBlog.html', context={
         'page_objects': page,
         'is_paginated': is_paginated,
         'next_url': next_url,
@@ -112,30 +100,17 @@ class PostUpdate(ObjectUpdateMixin, View):
     template = 'network/postUpdate.html'
 
 
-# class TagUpdate(ObjectUpdateMixin, View):
-#     model = Tag
-#     model_form = TagForm
-#     template = 'network/tagUpdate.html'
-
-
 class PostDelete(ObjectDeleteMixin, View):
     model = Post
     template = 'network/postDelete.html'
-    redirect_url = 'post_list_url'
+    redirect_url = 'my_blog_url'
 
 
+class TagDelete(ObjectDeleteMixin, View):
+    model = Tag
+    template = 'network/tagDelete.html'
+    redirect_url = 'tags_list_url'
 
-
-
-# class TagDelete(ObjectDeleteMixin, View):
-#     model = Tag
-#     template = 'network/tagDelete.html'
-#     redirect_url = 'tags_list_url'
-
-# def LikesPost(request):
-#     post = get_object_or_404(Post, id=request.POST.get('post_id'))
-#     post.likes.add(request.user)
-#     return HttpResponseRedirect(post.get_absolute_url())
 
 def posts_article(request):
     search_question = request.GET.get('search', '')
@@ -162,7 +137,7 @@ def posts_article(request):
     else:
         next_url = ''
 
-    return render(request, 'network/index.html', context={
+    return render(request, 'network/trendsList.html', context={
         'page_objects': page,
         'is_paginated': is_paginated,
         'next_url': next_url,
@@ -172,7 +147,6 @@ def posts_article(request):
 
 def delete_comment(request, id, slug):
     try:
-
         comment = Comments.objects.get(id=id)
         comment.delete()
         return redirect('post_detail_url', slug)

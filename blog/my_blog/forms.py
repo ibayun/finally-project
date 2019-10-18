@@ -38,9 +38,19 @@ class PostForm(LoginRequiredMixin, forms.ModelForm, CreateView):
         ]
 
         widgets = {
-            'article_title': forms.TextInput(attrs={'class': 'form-control', 'size': 14, 'title': 'Enter your title'}),
-            'article_text': forms.Textarea(attrs={'class': 'form-control', 'size': 14, 'title': 'Enter body post'}),
-            'tags': forms.SelectMultiple(attrs={'class': 'form-control', 'title': 'choice tag'}),
+            'article_title': forms.TextInput(attrs={
+                'class': 'form-control',
+                'size': 14,
+                'title': 'Сюда необходимо ввести название поста.'
+            }),
+            'article_text': forms.Textarea(attrs={
+                'class': 'form-control',
+                'size': 14,
+                'title': 'Тут будет располагаться тело поста'
+            }),
+            'tags': forms.SelectMultiple(attrs={
+                'class': 'form-control',
+                'title': 'Выберите тег из предложенных. Если вашего тега нет. Вы можете его создать'}),
         }
 
     def form_valid(self, form):
@@ -59,8 +69,16 @@ class CommentForm(ModelForm):
     class Meta:
         model = Comments
         fields = [
-            'text'
+            'text',
         ]
-        # widgets = {
-        #     'text_comments': forms.Textarea(attrs={'class': 'form-control', 'size': 14, 'title': 'Enter body post'})
-        # }
+
+        widgets = {
+            'text': forms.TextInput(attrs={
+                'class': 'form-group',
+                'placeholder': 'Teкст комментария',
+                # 'size': 14,
+                'cols': '40',
+                'rows': '20',
+                'title': 'Сюда необходимо ввести текст комментария.'
+            })
+        }
