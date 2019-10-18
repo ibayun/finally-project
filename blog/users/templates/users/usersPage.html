@@ -3,18 +3,22 @@
 {% block title %}Вход{% endblock %}
 
 {% block content %}
-    <h1>Вход</h1>
-    <div class="big-card form">
-        <form method="POST" action="/accounts/login">
-            {% csrf_token %}
-            {% if error %}
-                <div class="error">Something went wrong</div>
-            {% endif %}
-            <input placeholder="Username" name="username" type="text" class="text-input">
-            <input placeholder="Password" name="password" type="password" class="text-input">
-            <input type="submit" class="submit-btn">
-            <button id="index_forgot_button">Forgot your password?</button>
-        </form>
+    <div id="main_text_on_page">
+        <h1>Тут Вам всегда рады.</h1>
+<!--        <div class="big-card form">-->
+            <form method="POST" action="/accounts/login">
+                {% csrf_token %}
+                {% if error %}
+                    <div class="error"> <p>Что то пошло не так. Поробуйте ввести данные еще раз.</p>
+                        <p> В противном случае обращайтесь в поддержку. </p>
+                    </div>
+                {% endif %}
+                <input placeholder="Введите логин" name="username" type="text" class="text-input">
+                <input placeholder="Введите пароль" name="password" type="password" class="text-input">
+                <input type="submit"  value="Войти">
+
+            </form>
+<!--        </div>-->
     </div>
 {% endblock %}
 

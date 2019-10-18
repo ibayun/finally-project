@@ -1,20 +1,36 @@
 {% extends "mainpage/mainTemplates.html" %}
 
 {% block title %}
-    Delete post - ""
+    Delete post
 {% endblock %}
 
 {% block content %}
-    <form action ="{{ post.get_delete_url }}" method="post">
-        {% csrf_token %}
-
-        <h2>
-            Delete "{{ post.title }}"???
-        </h2>
-        <button type="submit" name="button">Yes</button>
-        <input type="button" onclick="history.back();" value="No"/>
-
-
-
-    </form>
+    <div id="tags_list">
+        <form action ="{{ post.get_delete_url }}" method="post">
+            {% csrf_token %}
+            <h2>Удаление или переиздание удаленной статьи.</h2>
+            <h4>
+                <p>Вы можете удалить составленную/опубликованную
+                статью или переиздать контент на нашей издательской
+                платформе.
+                </p>
+                <p>
+                Как только вы удалите вашу статью,
+                она не будет доступна на нашем портале, и мы не
+                сможем получить содержание вашей статьи.
+                Кроме того, мы перестанем распространять эту
+                статью. Однако мы не сможем удалить копии контента,
+                которые были архивированы или кэшированы
+                отслеживающими вас участниками и иными внешними
+                сторонами, такими как Google.
+                </p>
+                <p>
+                Чтобы удалить опубликованную статью нажмите "Да".
+                Если же вы просто ошиблись кнопкой, скорее нажмите "Нет".
+                </p>
+            </h4>
+            <button  class="btn btn-dark" type="submit" name="button">Да</button>
+            &emsp; <input type="button" class="btn btn-dark " onclick="history.back();" value="Нет"/>
+        </form>
+    </div>
 {% endblock %}

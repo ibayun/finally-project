@@ -64,5 +64,5 @@ class Tag(models.Model):
 class Comments(models.Model):
     author = models.ForeignKey(User, verbose_name='Пользователь', on_delete='CASCADE')
     post = models.ForeignKey(Post, verbose_name='Заметка', on_delete='CASCADE')
-    text = models.TextField()
+    text = models.TextField(verbose_name='Текст')
     date_comments = models.DateTimeField(auto_now_add=True)

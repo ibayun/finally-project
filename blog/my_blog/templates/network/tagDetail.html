@@ -5,13 +5,16 @@
 {% endblock %}
 
 {% block content %}
+    <div class="button_create_post_tag">
+        <a type="button" class=" btn btn-dark  btn-block" href="{% url 'tags_list_url' %}">Теги</a>
+        <a type="button" class="btn btn-dark  btn-block" href="{% url 'tag_create_url' %}">Создать тег</a>
+        <a type="button" class="btn btn-dark  btn-block" href="{% url 'post_create_url' %}">Создать пост</a>
+    </div>
+    <div id="tags_list">
+        <h1> Найденные посты с тегом - "{{ tag.tag_title }}":</h1>
 
-
-
-
-    <h1>Posts with "{{ tag.tag_title }}" tag:</h1>
-
-    {% for post in tag.posts.all %}
-        {% include 'network/includes/blog_template.html' %}
-    {% endfor %}
+        {% for post in tag.posts.all %}
+            {% include 'network/includes/blog_template.html' %}
+        {% endfor %}
+    </div>
 {% endblock %}

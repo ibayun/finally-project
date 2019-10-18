@@ -18,6 +18,33 @@ class RegistrationForm(forms.ModelForm):
         widgets = {
             "password": forms.PasswordInput
         }
+        widgets = {
+            "username": forms.TextInput(attrs={
+                'class': 'form-group',
+                'placeholder': 'I_bayun',
+                'title': 'Сюда необходимо ввести ваш логин.'
+            }),
+            "email": forms.TextInput(attrs={
+                'class': 'form-group',
+                'placeholder': 'email@email.email',
+                'title': 'Введите ваш email.'
+            }),
+            "password": forms.PasswordInput(attrs={
+                'class': 'form-group',
+                'placeholder': 'qwerty',
+                'title': 'Введите ваш пароль.'
+            }),
+            "first_name": forms.TextInput(attrs={
+                'class': 'form-group',
+                'placeholder': 'Семен',
+                'title': 'Сюда необходимо ввести ваше имя.'
+            }),
+            "last_name": forms.TextInput(attrs={
+                'class': 'form-group',
+                'placeholder': 'Петров',
+                'title': 'Сюда необходимо ввести вашу фамилию.'
+            }),
+        }
 
     def save(self, commit=True):
         password = (

@@ -137,7 +137,7 @@ def posts_article(request):
     else:
         next_url = ''
 
-    return render(request, 'network/index.html', context={
+    return render(request, 'network/trendsList.html', context={
         'page_objects': page,
         'is_paginated': is_paginated,
         'next_url': next_url,

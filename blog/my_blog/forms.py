@@ -68,8 +68,17 @@ class PostForm(LoginRequiredMixin, forms.ModelForm, CreateView):
 class CommentForm(ModelForm):
     class Meta:
         model = Comments
-        print(dir(Comments))
-        print(Comments.text)
         fields = [
-            'text'
+            'text',
         ]
+
+        widgets = {
+            'text': forms.TextInput(attrs={
+                'class': 'form-group',
+                'placeholder': 'Teкст комментария',
+                # 'size': 14,
+                'cols': '40',
+                'rows': '20',
+                'title': 'Сюда необходимо ввести текст комментария.'
+            })
+        }

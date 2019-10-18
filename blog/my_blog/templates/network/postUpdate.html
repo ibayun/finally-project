@@ -6,31 +6,15 @@
 {% endblock %}
 
 {% block content %}
-
-    <form action="{{ post.get_update_url }}" method="post">
-        {% csrf_token %}
-
-        {% for field in form %}
-            <div class="form-group">
-                {% if field.errors %}
-                    <div class="alert alert-errors">
-                        {{ field.errors }}
-                    </div>
-                {% endif %}
-
-
-            </div>
-
-
-        {% endfor %}
-        {{ form.article_title}}
-        {{ form.slug}}
-        {{ form.article_text}}
-        {{ form.tags}}
-        {{ form.author}}
-
-
-        <button type="submit" class="btn btn-primary">Update</button>
-    </form>
-
+    <div id="tags_list">
+        <form action="{{ post.get_update_url }}" method="post">
+            {% csrf_token %}
+            <p id="update_post">{{ form.article_title}}</p>
+            <p id="update_post">{{ form.slug}}</p>
+            <p id="update_post">{{ form.article_text}}</p>
+            <p id="update_post">{{ form.tags}}</p>
+            <p id="update_post">{{ form.author}}</p>
+            <button type="submit" class=" btn btn-dark btn-block">Обновить</button>
+        </form>
+    </div>
 {% endblock %}

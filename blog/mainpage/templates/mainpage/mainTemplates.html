@@ -34,7 +34,7 @@
         {% block content %}
         {% endblock %}
         {% if is_paginated %}
-            <nav aria-label="...">
+<!--            <nav aria-label="...">-->
                 <ul class="pagination">
                     <li class="page-item {% if not previous_url %} disabled {% endif %}">
                         <a class="page-link" href="{{ previous_url }}" tabindex="-1" aria-disabled="true">Previous</a>
@@ -42,7 +42,7 @@
                     {% for n in page_objects.paginator.page_range %}
                         {% if page_objects.number == n %}
                             <li class="page-item active">
-                                <a class="page-link" href="?page={{ n }}">{{ n }}
+                                <a class="page-link " href="?page={{ n }}">{{ n }}
                                 <span class="sr-only">(current)</span>
                                 </a>
                             </li>
@@ -58,11 +58,11 @@
                     </li>
                     </li>
                 </ul>
-            </nav>
+<!--            </nav>-->
         {% endif %}
 
             {% if user.is_authenticated %}
-            <p id="name_user"> Здравствуйте, {{user.username}} </p>
+            <p id="name_user">{{user.username}} </p>
             <nav>
                 <form class="button-menu">
                     <input class="btn btn-success push_but"  type="button" value="Мой блог" onClick='location.href="http://127.0.0.1:8000/blog/myblog/"'>
@@ -81,8 +81,10 @@
             {% endif %}
         </div>
 
-        <footer id="footer">
-            Copyright Cris Brown
+        <p id="footer">
+           О нас написано много статей и книг поэтому мы не стали делаь отдельную статью.
+            Можете поискать в интернете. Работаем пару тысяч световых лет.
+             По вопросам сюда. Денег получить - сюда. Сотрудничество -туда
         </footer>
     </body>
 </html>
