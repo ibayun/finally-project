@@ -324,3 +324,7 @@ input.registration{
     position: absolute;
     left: 310px;
 }
+
+#button_create_tag{
+    padding-top: 40px;
+}
