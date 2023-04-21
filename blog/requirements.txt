@@ -1,5 +1,5 @@
 pytz==2019.2
-sqlparse==0.3.0
+sqlparse==0.4.4
 Werkzeug==0.15.6
 numpy
 Pillow
